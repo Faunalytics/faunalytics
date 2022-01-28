@@ -1,8 +1,8 @@
 #' @title Format demographic report tables
 #' @description Characteristics can be reordered using the chars argument, but traits within those groups will be ordered as they are in the data.
 #' The exception to this is for repeated options (e.g., "Yes" and "No"), which will be ordered in the way they first appear in the data.
-#' @param data A dataframe to be formatted as an html table. This dataframe should have the desired column names, with the exception of the main characteristic variable name, which can be overriden to blank.
-#' @param char_var Variable that contains characteristics. Set to Characteristic by default.
+#' @param data Required. A dataframe to be formatted as an html table. This dataframe should have the desired column names, with the exception of the main characteristic variable name, which can be overriden to blank.
+#' @param char_var Required. Variable that contains characteristics. Set to Characteristic by default.
 #' @param chars A vector of quoted characteristic groups. Table will be ordered in the same order these groups are listed.
 #' These should NOT include specific traits (e.g., "Woman"), but instead, only the groups those traits fall into (e.g. "Gender").
 #' These are the rows that will be fill in a different color.

@@ -14,11 +14,12 @@ table_format(
   shade_color = "lightgray",
   return_html = FALSE,
   include_css = TRUE,
+  column_pcts = NULL,
   ...
 )
 }
 \arguments{
-\item{data}{A dataframe to be formatted as an html table}
+\item{data}{Required. A dataframe to be formatted as an html table}
 
 \item{header_fill}{Color of header background. Blue by default}
 
@@ -43,8 +44,12 @@ Currently, the only other option is "lightblue", which will make text in those r
 An HTML table or raw HTML
 }
 \description{
-Format report tables
+Format a table using Faunalytics standards.
+If you want to specify column widths, leave return_html as FALSE and pipe the results of table_format
+into cols_width, where you will specify the column widths. To return html, pipe the result of that pipeline
+into return_html. For more, see ?cols_width and ?return_html. An example is given below.
 }
 \examples{
 table_format(head(mtcars))
+table_format(head(cars)) \%>\% cols_width(speed ~ pct(80), dist ~ pct(20)) \%>\% return_html()
 }

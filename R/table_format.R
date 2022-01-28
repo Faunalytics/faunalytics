@@ -1,6 +1,9 @@
 #' @title Format report tables
-#'
-#' @param data A dataframe to be formatted as an html table
+#' @description Format a table using Faunalytics standards.
+#' If you want to specify column widths, leave return_html as FALSE and pipe the results of table_format
+#' into cols_width, where you will specify the column widths. To return html, pipe the result of that pipeline
+#' into return_html. For more, see ?cols_width and ?return_html. An example is given below.
+#' @param data Required. A dataframe to be formatted as an html table
 #' @param header_fill Color of header background. Blue by default
 #' @param header_color Color of header text. White by default
 #' @param cell_fill Color of table body cells. White by default
@@ -17,10 +20,12 @@
 #'
 #' @import gt dplyr
 #' @examples table_format(head(mtcars))
+#' table_format(head(cars)) %>% cols_width(speed ~ pct(80), dist ~ pct(20)) %>% return_html()
 table_format <- function(data, header_fill = "blue", header_color = "white",
                          cell_fill = "white", text_color = "darkgray",
                          border_color = "white", shade_color = "lightgray",
-                         return_html = FALSE, include_css = TRUE, ...){
+                         return_html = FALSE, include_css = TRUE,
+                         column_pcts = NULL, ...){
 
   # Create gt table 'foo' out of data
   foo <- data %>% gt()

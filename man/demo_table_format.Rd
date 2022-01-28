@@ -19,9 +19,9 @@ demo_table_format(
 )
 }
 \arguments{
-\item{data}{A dataframe to be formatted as an html table. This dataframe should have the desired column names, with the exception of the main characteristic variable name, which can be overriden to blank.}
+\item{data}{Required. A dataframe to be formatted as an html table. This dataframe should have the desired column names, with the exception of the main characteristic variable name, which can be overriden to blank.}
 
-\item{char_var}{Variable that contains characteristics. Set to Characteristic by default.}
+\item{char_var}{Required. Variable that contains characteristics. Set to Characteristic by default.}
 
 \item{chars}{A vector of quoted characteristic groups. Table will be ordered in the same order these groups are listed.
 These should NOT include specific traits (e.g., "Woman"), but instead, only the groups those traits fall into (e.g. "Gender").
