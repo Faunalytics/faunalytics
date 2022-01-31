@@ -14,7 +14,6 @@ table_format(
   shade_color = "lightgray",
   return_html = FALSE,
   include_css = TRUE,
-  column_pcts = NULL,
   ...
 )
 }
@@ -51,5 +50,5 @@ into return_html. For more, see ?cols_width and ?return_html. An example is give
 }
 \examples{
 table_format(head(mtcars))
-table_format(head(cars)) \%>\% cols_width(speed ~ pct(80), dist ~ pct(20)) \%>\% return_html()
+table_format(head(cars)) \%>\% return_html()
 }

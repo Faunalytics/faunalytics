@@ -20,12 +20,12 @@
 #' @export
 #' @import gt dplyr
 #' @examples table_format(head(mtcars))
-#' table_format(head(cars)) %>% cols_width(speed ~ pct(80), dist ~ pct(20)) %>% return_html()
+#' table_format(head(cars)) %>% return_html()
 table_format <- function(data, header_fill = "blue", header_color = "white",
                          cell_fill = "white", text_color = "darkgray",
                          border_color = "white", shade_color = "lightgray",
                          return_html = FALSE, include_css = TRUE,
-                         column_pcts = NULL, ...){
+                         ...){
 
   # Create gt table 'foo' out of data
   foo <- data %>% gt()
