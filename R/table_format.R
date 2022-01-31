@@ -17,7 +17,7 @@
 #'
 #'
 #' @return An HTML table or raw HTML
-#'
+#' @export
 #' @import gt dplyr
 #' @examples table_format(head(mtcars))
 #' table_format(head(cars)) %>% cols_width(speed ~ pct(80), dist ~ pct(20)) %>% return_html()
