@@ -1,11 +1,13 @@
 Package: faunalytics
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Simplify Your Faunalytics Workflow
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Zach Wulderk
+Maintainer: Zach Wulderk <zach@faunalytics.org>
+Description: This package contains useful functions for speeding up
+    and/or simplifying frequent Faunalytics-related tasks, like
+    formatting tables and figures, getting colors from the brand
+    palette, and creating specific types of figures. This package is still in a developmental phase.
 License: CC0
 Encoding: UTF-8
 LazyData: true
