@@ -10,8 +10,12 @@
 #' @param stripe_fill Color to fill characteristic row. "lightblue" by default.
 #' @param stripe_color Color of text in characteristic row. "white" by default.
 #' @param text_color Color of text in non-characteristic rows and header. "darkgray" by default.
+#' @param na.rm Remove NA values from character columns and replace with blanks. TRUE by default.
+#' If FALSE, NA will show up in any cells where it appears in the data you feed into this function.
 #' @param return_html If TRUE, returns raw HTML of table. FALSE by default
 #' @param include_css If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE
+#' @param write If TRUE, write results to the file specified in the path argument. FALSE by default.
+#' @param path File path to be written to if write is TRUE. "table.txt" in working directory by default.
 #' @param ... Other arguments
 #' @return An HTML table or raw HTML
 #' @export
@@ -23,7 +27,20 @@ demo_table_format <- function(data, char_var = Characteristic,
                               chars = c("Gender", "Race", "Region", "Companion Animals", "Went Fishing", "Handled Chickens"),
                               char_header_blank = FALSE, stripe_fill = "lightblue",
                               stripe_color = "white", text_color = "darkgray",
-                              return_html = FALSE, include_css = TRUE, ...){
+                              return_html = FALSE, include_css = TRUE,
+                              write = FALSE, path = "table.txt",
+                              ...){
+
+   # Set NA values to ""
+   if(na.rm){
+      data <- data %>%
+         mutate(across(where(is.character), function(x){
+            x = case_when(
+               is.na(x) ~ "",
+               TRUE ~ x
+            )
+         }))
+   }
 
   # Stripe fill
   stripe_fill <- gsub(" ", "", tolower(stripe_fill)) # Standardize
@@ -95,7 +112,7 @@ data <- data %>% mutate(groupr = case_when(
    )
 
  if(return_html){
-   foo <- foo %>% as_raw_html(inline_css = include_css)
+    foo <- return_html(foo, include_css = include_css, write = write, path = path)
  }
 
  return(foo)

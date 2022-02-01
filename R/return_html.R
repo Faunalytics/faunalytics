@@ -12,6 +12,10 @@
 return_html <- function(x, include_css = TRUE,
                         write = FALSE, path = "table.txt"){
   res <- as_raw_html(x, inline_css = include_css)
+
+  # Remove any font-family specifications so that table inherits
+  # from the website's stylesheet
+  res <- gsub("font-family.*?;\\s*", "", res)
   if(write){
     fwrite(list(res), file = path, quote = FALSE)
   } else {

@@ -11,8 +11,16 @@
 #' @param border_color Color of cell borders. White by default
 #' @param shade_color Color of alternate row shading. Gray by default.
 #' Currently, the only other option is "lightblue", which will make text in those rows white.
+#' @param na.rm Remove NA values from character columns and replace with blanks. TRUE by default.
+#' If FALSE, NA will show up in any cells where it appears in the data you feed into this function.
+#' @param h_aligns Horizontal alignment of columns. If this is not specified, R will guess.
+#' You can either specify a single string which will be applied to all columns,
+#' or a vector of strings where that vector's length is equal to the number of columns in the data.
+#' Options must be one of: "left", "center", "right"
 #' @param return_html If TRUE, returns raw HTML of table. FALSE by default
 #' @param include_css If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE
+#' @param write If TRUE, write results to the file specified in the path argument. FALSE by default.
+#' @param path File path to be written to if write is TRUE. "table.txt" in working directory by default.
 #' @param ... Other arguments
 #'
 #'
@@ -24,8 +32,21 @@
 table_format <- function(data, header_fill = "blue", header_color = "white",
                          cell_fill = "white", text_color = "darkgray",
                          border_color = "white", shade_color = "lightgray",
+                         na.rm = TRUE, h_aligns = NULL,
                          return_html = FALSE, include_css = TRUE,
+                         write = FALSE, path = "table.txt",
                          ...){
+
+  # Set NA values to ""
+  if(na.rm){
+    data <- data %>%
+      mutate(across(where(is.character), function(x){
+        x = case_when(
+          is.na(x) ~ "",
+          TRUE ~ x
+        )
+      }))
+  }
 
   # Create gt table 'foo' out of data
   foo <- data %>% gt()
@@ -112,8 +133,24 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
     )
   }
 
+  # Column horizontal alignment
+  if(!is.null(h_aligns)){
+    if(length(h_aligns) == 1){
+      foo <- foo %>% cols_align(align = h_aligns)
+    } else {
+
+      # To Do: See if there is a more efficient way of executing this instead of a loop,
+      # possibly using {eval(parse(...))}
+
+      for(i in 1:length(names(data))){
+        foo <- foo %>%
+          cols_align(align = h_aligns[i], columns = names(data)[i])
+      }
+    }
+  }
+
   if(return_html){
-    foo <- foo %>% as_raw_html(inline_css = include_css)
+    foo <- return_html(foo, include_css = include_css, write = write, path = path)
   }
 
   return(foo)

@@ -15,6 +15,8 @@ demo_table_format(
   text_color = "darkgray",
   return_html = FALSE,
   include_css = TRUE,
+  write = FALSE,
+  path = "table.txt",
   ...
 )
 }
@@ -39,7 +41,14 @@ These are the rows that will be fill in a different color.}
 
 \item{include_css}{If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE}
 
+\item{write}{If TRUE, write results to the file specified in the path argument. FALSE by default.}
+
+\item{path}{File path to be written to if write is TRUE. "table.txt" in working directory by default.}
+
 \item{...}{Other arguments}
+
+\item{na.rm}{Remove NA values from character columns and replace with blanks. TRUE by default.
+If FALSE, NA will show up in any cells where it appears in the data you feed into this function.}
 }
 \value{
 An HTML table or raw HTML

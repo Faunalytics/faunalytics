@@ -12,8 +12,12 @@ table_format(
   text_color = "darkgray",
   border_color = "white",
   shade_color = "lightgray",
+  na.rm = TRUE,
+  h_aligns = NULL,
   return_html = FALSE,
   include_css = TRUE,
+  write = FALSE,
+  path = "table.txt",
   ...
 )
 }
@@ -33,9 +37,21 @@ table_format(
 \item{shade_color}{Color of alternate row shading. Gray by default.
 Currently, the only other option is "lightblue", which will make text in those rows white.}
 
+\item{na.rm}{Remove NA values from character columns and replace with blanks. TRUE by default.
+If FALSE, NA will show up in any cells where it appears in the data you feed into this function.}
+
+\item{h_aligns}{Horizontal alignment of columns. If this is not specified, R will guess.
+You can either specify a single string which will be applied to all columns,
+or a vector of strings where that vector's length is equal to the number of columns in the data.
+Options must be one of: "left", "center", "right"}
+
 \item{return_html}{If TRUE, returns raw HTML of table. FALSE by default}
 
 \item{include_css}{If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE}
+
+\item{write}{If TRUE, write results to the file specified in the path argument. FALSE by default.}
+
+\item{path}{File path to be written to if write is TRUE. "table.txt" in working directory by default.}
 
 \item{...}{Other arguments}
 }
