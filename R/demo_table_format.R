@@ -20,27 +20,43 @@
 #' @return An HTML table or raw HTML
 #' @export
 #' @importFrom zoo na.locf
-#' @examples demo_table_format(df,
+#' @examples temp_data <- data.frame(
+#' "Trait" = c("Gender", "Woman or Other", "Man",
+#'     "Income", "Less than $25,000", "$25,000 to $49,999", "$50,000 to $74,999",
+#'     "$75,000 to $99,999", "$100,000 or more",
+#'     "Education", "Less than high school graduate",
+#'     "High school graduate", "Some college or university, no degree",
+#'     "Associate's degree or college diploma", "Bachelor's degree",
+#'     "Master's degree", "Professional or doctoral degree"),
+#' "Percent" = c("", "49%", "51%",
+#'     "", "12%", "20%", "19%",
+#'     "22%", "27%",
+#'     "", "3%",
+#'     "18%", "17%",
+#'     "18%", "32%",
+#'    "10%", "3%"))
+#' demo_table_format(temp_data,
 #' char_var = Trait,
-#' chars = c("Income", "Education", "State", "Gender"))
+#' chars = c("Gender", "Income", "Education"))
 demo_table_format <- function(data, char_var = Characteristic,
                               chars = c("Gender", "Race", "Region", "Companion Animals", "Went Fishing", "Handled Chickens"),
                               char_header_blank = FALSE, stripe_fill = "lightblue",
                               stripe_color = "white", text_color = "darkgray",
+                              na.rm = T,
                               return_html = FALSE, include_css = TRUE,
                               write = FALSE, path = "table.txt",
                               ...){
 
    # Set NA values to ""
-   if(na.rm){
-      data <- data %>%
-         mutate(across(where(is.character), function(x){
-            x = case_when(
-               is.na(x) ~ "",
-               TRUE ~ x
-            )
-         }))
-   }
+   # if(na.rm){
+   #    data <- data %>%
+   #       mutate(across(where(is.character), function(x){
+   #          x = case_when(
+   #             is.na(x) ~ "",
+   #             TRUE ~ x
+   #          )
+   #       }))
+   # }
 
   # Stripe fill
   stripe_fill <- gsub(" ", "", tolower(stripe_fill)) # Standardize

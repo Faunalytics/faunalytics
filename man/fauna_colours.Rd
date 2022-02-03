@@ -4,7 +4,6 @@
 \alias{fauna_colours}
 \title{Return color(s) from the Faunalytics palette}
 \usage{
-fauna_colors(...)
 fauna_colours(...)
 }
 \arguments{

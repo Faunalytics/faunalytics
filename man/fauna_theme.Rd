@@ -6,9 +6,6 @@
 \usage{
 fauna_theme()
 }
-\arguments{
-\item{p}{A ggplot object}
-}
 \value{
 A Faunalytics-themed ggplot object
 }
@@ -16,7 +13,8 @@ A Faunalytics-themed ggplot object
 Apply Faunalytics aesthetics to ggplot graphs
 }
 \examples{
+library(ggplot2)
 ggplot(mtcars, aes(x = cyl, y = mpg)) +
-geom_col() +
-fauna_theme()
+    geom_col() +
+    fauna_theme()
 }

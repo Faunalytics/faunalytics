@@ -13,6 +13,7 @@ demo_table_format(
   stripe_fill = "lightblue",
   stripe_color = "white",
   text_color = "darkgray",
+  na.rm = T,
   return_html = FALSE,
   include_css = TRUE,
   write = FALSE,
@@ -37,6 +38,9 @@ These are the rows that will be fill in a different color.}
 
 \item{text_color}{Color of text in non-characteristic rows and header. "darkgray" by default.}
 
+\item{na.rm}{Remove NA values from character columns and replace with blanks. TRUE by default.
+If FALSE, NA will show up in any cells where it appears in the data you feed into this function.}
+
 \item{return_html}{If TRUE, returns raw HTML of table. FALSE by default}
 
 \item{include_css}{If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE}
@@ -46,9 +50,6 @@ These are the rows that will be fill in a different color.}
 \item{path}{File path to be written to if write is TRUE. "table.txt" in working directory by default.}
 
 \item{...}{Other arguments}
-
-\item{na.rm}{Remove NA values from character columns and replace with blanks. TRUE by default.
-If FALSE, NA will show up in any cells where it appears in the data you feed into this function.}
 }
 \value{
 An HTML table or raw HTML
@@ -58,7 +59,22 @@ Characteristics can be reordered using the chars argument, but traits within tho
 The exception to this is for repeated options (e.g., "Yes" and "No"), which will be ordered in the way they first appear in the data.
 }
 \examples{
-demo_table_format(df,
+temp_data <- data.frame(
+"Trait" = c("Gender", "Woman or Other", "Man",
+    "Income", "Less than $25,000", "$25,000 to $49,999", "$50,000 to $74,999",
+    "$75,000 to $99,999", "$100,000 or more",
+    "Education", "Less than high school graduate",
+    "High school graduate", "Some college or university, no degree",
+    "Associate's degree or college diploma", "Bachelor's degree",
+    "Master's degree", "Professional or doctoral degree"),
+"Percent" = c("", "49\%", "51\%",
+    "", "12\%", "20\%", "19\%",
+    "22\%", "27\%",
+    "", "3\%",
+    "18\%", "17\%",
+    "18\%", "32\%",
+   "10\%", "3\%"))
+demo_table_format(temp_data,
 char_var = Trait,
-chars = c("Income", "Education", "State", "Gender"))
+chars = c("Gender", "Income", "Education"))
 }

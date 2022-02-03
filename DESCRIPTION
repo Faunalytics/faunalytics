@@ -12,11 +12,15 @@ License: CC0
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
+Depends: 
+    dplyr,
+    R (>= 2.10)
 Imports:
+    ggplot2,
 	tidyverse,
 	magrittr,
 	janitor,
 	gt,
-	zoo
-Suggests: 
-    testthat
+	zoo,
+	data.table,
+	usethis

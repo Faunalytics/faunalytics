@@ -22,5 +22,5 @@ The HTML of the table provided.
 Return HTML of table
 }
 \examples{
-table_format(cars) \%>\% return_html(write = TRUE, path = "output/Figure1.txt")
+table_format(cars) \%>\% return_html(write = TRUE, path = "Figure1.txt")
 }

@@ -8,7 +8,7 @@
 #' @return The HTML of the table provided.
 #' @export
 #' @importFrom data.table fwrite
-#' @examples table_format(cars) %>% return_html(write = TRUE, path = "output/Figure1.txt")
+#' @examples table_format(cars) %>% return_html(write = TRUE, path = "Figure1.txt")
 return_html <- function(x, include_css = TRUE,
                         write = FALSE, path = "table.txt"){
   res <- as_raw_html(x, inline_css = include_css)
