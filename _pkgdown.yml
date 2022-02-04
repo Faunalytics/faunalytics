@@ -2,5 +2,5 @@ url: https://faunalytics.github.io/faunalytics/
 template: 
   bootstrap: 5
   bootswatch: darkly
-  theme: 
+  theme: arrow-dark
 
