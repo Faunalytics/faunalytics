@@ -122,7 +122,7 @@ data <- data %>% mutate(groupr = case_when(
      locations = list(cells_body(rows = group_vec))
    ) %>%
    tab_style(
-     style = list(cell_text(align = "left")),
+     style = list(cell_text(align = "left", weight = "bold")),
      locations = list(cells_body(columns = 1),
                       cells_column_labels(columns = 1))
    )
