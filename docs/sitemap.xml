@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/index.html</loc>
   </url>
   <url>
-    <loc>/reference/demo_table_format.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/demo_table_format.html</loc>
   </url>
   <url>
-    <loc>/reference/donut_maker.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/donut_maker.html</loc>
   </url>
   <url>
-    <loc>/reference/fauna_colors.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/fauna_colors.html</loc>
   </url>
   <url>
-    <loc>/reference/fauna_colours.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/fauna_colours.html</loc>
   </url>
   <url>
-    <loc>/reference/fauna_theme.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/fauna_theme.html</loc>
   </url>
   <url>
-    <loc>/reference/fauna_theme_flip.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/fauna_theme_flip.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/return_full_palette.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/return_full_palette.html</loc>
   </url>
   <url>
-    <loc>/reference/return_html.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/return_html.html</loc>
   </url>
   <url>
-    <loc>/reference/table_format.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/table_format.html</loc>
   </url>
   <url>
-    <loc>/reference/test_data.html</loc>
+    <loc>https://faunalytics.github.io/faunalytics/reference/test_data.html</loc>
   </url>
 </urlset>
