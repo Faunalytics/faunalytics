@@ -9,14 +9,22 @@
 #' @param cell_fill Color of table body cells. White by default
 #' @param text_color Color of table body text. Dark gray by default
 #' @param border_color Color of cell borders. White by default
-#' @param shade_color Color of alternate row shading. Gray by default.
-#' Currently, the only other option is "lightblue", which will make text in those rows white.
+#' @param shade_color Color of alternate row shading. Light blue by default.
+#' Currently, the only other option is "lightgray", which will also make text in those dark.
 #' @param na.rm Remove NA values from character columns and replace with blanks. TRUE by default.
 #' If FALSE, NA will show up in any cells where it appears in the data you feed into this function.
 #' @param h_aligns Horizontal alignment of columns. If this is not specified, R will guess.
 #' You can either specify a single string which will be applied to all columns,
 #' or a vector of strings where that vector's length is equal to the number of columns in the data.
 #' Options must be one of: "left", "center", "right"
+#' @param col_widths Widths of columns. Must take the form of a list using list(). Uses expressions for the assignment of column widths for the table columns
+#' in data. Two-sided formulas (e.g, <LHS> ~ <RHS>) can be used, where the left-hand side corresponds to selections
+#' of columns and the right-hand side evaluates to single-length character values in the form {##}px (i.e., pixel dimensions);
+#' the px() helper function is best used for this purpose. The pct() helper function is recommended for use in col_widths, which
+#' will allow you to set the percentage of the table width each column should make up. The column-based select helpers starts_with(), ends_with(), contains(),
+#' matches(), one_of(), and everything() can be used in the LHS. Subsequent expressions that operate on the columns assigned
+#' previously will result in overwriting column width values (both in the same cols_width() call and across separate calls).
+#' All other columns can be assigned a default width value by using everything() on the left-hand side. See examples.
 #' @param return_html If TRUE, returns raw HTML of table. FALSE by default
 #' @param include_css If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE
 #' @param write If TRUE, write results to the file specified in the path argument. FALSE by default.
@@ -29,10 +37,18 @@
 #' @import gt dplyr
 #' @examples table_format(head(mtcars))
 #' table_format(head(cars)) %>% return_html()
+#'
+#' mtcars %>% head() %>% select(mpg, cyl, disp, hp) %>%
+#' table_format(col_widths = list(
+#'     starts_with("m") ~ pct(.2),
+#'     cyl ~ pct(.5),
+#'     everything() ~ pct(.15)
+#'   )
+#' )
 table_format <- function(data, header_fill = "blue", header_color = "white",
                          cell_fill = "white", text_color = "darkgray",
-                         border_color = "white", shade_color = "lightgray",
-                         na.rm = TRUE, h_aligns = NULL,
+                         border_color = "white", shade_color = "lightblue",
+                         na.rm = TRUE, h_aligns = NULL, col_widths = NULL,
                          return_html = FALSE, include_css = TRUE,
                          write = FALSE, path = "table.txt",
                          ...){
@@ -75,10 +91,10 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
   # Shading color
   shade_color <- gsub(" ", "", tolower(shade_color)) # Standardize
 
-  alt_row_col <- if(shade_color == "lightblue"){
-    fauna_colors("lightblue")
-  } else {
+  alt_row_col <- if(shade_color == "lightgray"){
     fauna_colors("lightgray")
+  } else {
+    fauna_colors("lightblue")
   }
 
   # Set table characteristics
@@ -149,8 +165,21 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
     }
   }
 
+  if(!is.null(col_widths)){
+    foo <- foo %>%
+      cols_width(
+        .list = col_widths
+      )
+  }
+
+
   if(return_html){
     foo <- return_html(foo, include_css = include_css, write = write, path = path)
+  }
+
+  if(((!return_html) & write)){
+    foo <- return_html(foo, include_css = include_css, write = write, path = path)
+    foo <- paste("Table saved to ", path)
   }
 
   return(foo)

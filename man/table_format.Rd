@@ -11,9 +11,10 @@ table_format(
   cell_fill = "white",
   text_color = "darkgray",
   border_color = "white",
-  shade_color = "lightgray",
+  shade_color = "lightblue",
   na.rm = TRUE,
   h_aligns = NULL,
+  col_widths = NULL,
   return_html = FALSE,
   include_css = TRUE,
   write = FALSE,
@@ -34,8 +35,8 @@ table_format(
 
 \item{border_color}{Color of cell borders. White by default}
 
-\item{shade_color}{Color of alternate row shading. Gray by default.
-Currently, the only other option is "lightblue", which will make text in those rows white.}
+\item{shade_color}{Color of alternate row shading. Light blue by default.
+Currently, the only other option is "lightgray", which will also make text in those dark.}
 
 \item{na.rm}{Remove NA values from character columns and replace with blanks. TRUE by default.
 If FALSE, NA will show up in any cells where it appears in the data you feed into this function.}
@@ -44,6 +45,15 @@ If FALSE, NA will show up in any cells where it appears in the data you feed int
 You can either specify a single string which will be applied to all columns,
 or a vector of strings where that vector's length is equal to the number of columns in the data.
 Options must be one of: "left", "center", "right"}
+
+\item{col_widths}{Widths of columns. Must take the form of a list using list(). Uses expressions for the assignment of column widths for the table columns
+in data. Two-sided formulas (e.g, <LHS> ~ <RHS>) can be used, where the left-hand side corresponds to selections
+of columns and the right-hand side evaluates to single-length character values in the form {##}px (i.e., pixel dimensions);
+the px() helper function is best used for this purpose. The pct() helper function is recommended for use in col_widths, which
+will allow you to set the percentage of the table width each column should make up. The column-based select helpers starts_with(), ends_with(), contains(),
+matches(), one_of(), and everything() can be used in the LHS. Subsequent expressions that operate on the columns assigned
+previously will result in overwriting column width values (both in the same cols_width() call and across separate calls).
+All other columns can be assigned a default width value by using everything() on the left-hand side. See examples.}
 
 \item{return_html}{If TRUE, returns raw HTML of table. FALSE by default}
 
@@ -67,4 +77,12 @@ into return_html. For more, see ?cols_width and ?return_html. An example is give
 \examples{
 table_format(head(mtcars))
 table_format(head(cars)) \%>\% return_html()
+
+mtcars \%>\% head() \%>\% select(mpg, cyl, disp, hp) \%>\%
+table_format(col_widths = list(
+    starts_with("m") ~ pct(.2),
+    cyl ~ pct(.5),
+    everything() ~ pct(.15)
+  )
+)
 }

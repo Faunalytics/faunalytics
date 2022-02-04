@@ -131,6 +131,11 @@ data <- data %>% mutate(groupr = case_when(
     foo <- return_html(foo, include_css = include_css, write = write, path = path)
  }
 
+ if(((!return_html) & write)){
+    foo <- return_html(foo, include_css = include_css, write = write, path = path)
+    foo <- paste("Table saved to ", path)
+ }
+
  return(foo)
 
 }
