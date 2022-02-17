@@ -5,12 +5,28 @@
 #' @param empty_color Color for remaining area. Light gray by default.
 #' @param label Text for middle of graph. By default, x written as a percentage. Set to "" for blank.
 #' @param label_color Color of text for middle of graph. By default, this is the same as color.
+#' @param colour See colour
+#' @param empty_colour See empty_color
+#' @param label_colour See label_color
 #' @return A ggplot graph
 #' @export
 #' @import ggplot2
 #' @examples donut_maker(.25, "red")
 donut_maker <- function(x, color = "green", empty_color = "lightgray",
-                        label = NULL, label_color = NULL){
+                        label = NULL, label_color = NULL,
+                        colour = NULL, empty_colour = NULL,
+                        label_colour = NULL){
+
+  if(!is.null(colour)){
+    color <- colour
+  }
+  if(!is.null(empty_colour)){
+    empty_color <- empty_colour
+  }
+  if(!is.null(label_colour)){
+    label_color <- label_colour
+  }
+
   data <- data.frame(value = c(x, 1-x)) %>%
     mutate(ymax = cumsum(value),
            ymin = c(0, x))

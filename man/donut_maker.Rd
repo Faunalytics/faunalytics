@@ -9,7 +9,10 @@ donut_maker(
   color = "green",
   empty_color = "lightgray",
   label = NULL,
-  label_color = NULL
+  label_color = NULL,
+  colour = NULL,
+  empty_colour = NULL,
+  label_colour = NULL
 )
 }
 \arguments{
@@ -22,6 +25,12 @@ donut_maker(
 \item{label}{Text for middle of graph. By default, x written as a percentage. Set to "" for blank.}
 
 \item{label_color}{Color of text for middle of graph. By default, this is the same as color.}
+
+\item{colour}{See colour}
+
+\item{empty_colour}{See empty_color}
+
+\item{label_colour}{See label_color}
 }
 \value{
 A ggplot graph

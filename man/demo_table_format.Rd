@@ -18,6 +18,8 @@ demo_table_format(
   include_css = TRUE,
   write = FALSE,
   path = "table.txt",
+  stripe_colour = NULL,
+  text_colour = NULL,
   ...
 )
 }
@@ -48,6 +50,10 @@ If FALSE, NA will show up in any cells where it appears in the data you feed int
 \item{write}{If TRUE, write results to the file specified in the path argument. FALSE by default.}
 
 \item{path}{File path to be written to if write is TRUE. "table.txt" in working directory by default.}
+
+\item{stripe_colour}{See stripe_color}
+
+\item{text_colour}{See text_color}
 
 \item{...}{Other arguments}
 }

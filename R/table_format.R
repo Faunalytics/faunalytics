@@ -9,6 +9,7 @@
 #' @param cell_fill Color of table body cells. White by default
 #' @param text_color Color of table body text. Dark gray by default
 #' @param border_color Color of cell borders. White by default
+#' @param shade Shade alternate rows. TRUE by default. Begins with the second row.
 #' @param shade_color Color of alternate row shading. Light blue by default.
 #' Currently, the only other option is "lightgray", which will also make text in those dark.
 #' @param na.rm Remove NA values from character columns and replace with blanks. TRUE by default.
@@ -29,6 +30,10 @@
 #' @param include_css If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE
 #' @param write If TRUE, write results to the file specified in the path argument. FALSE by default.
 #' @param path File path to be written to if write is TRUE. "table.txt" in working directory by default.
+#' @param header_colour See header_color
+#' @param text_colour See text_color
+#' @param border_colour See border_color
+#' @param shade_colour See shade_color
 #' @param ... Other arguments
 #'
 #'
@@ -47,11 +52,27 @@
 #' )
 table_format <- function(data, header_fill = "blue", header_color = "white",
                          cell_fill = "white", text_color = "darkgray",
-                         border_color = "white", shade_color = "lightblue",
-                         na.rm = TRUE, h_aligns = NULL, col_widths = NULL,
+                         border_color = "white", shade = TRUE,
+                         shade_color = "lightblue", na.rm = TRUE,
+                         h_aligns = NULL, col_widths = NULL,
                          return_html = FALSE, include_css = TRUE,
                          write = FALSE, path = "table.txt",
+                         header_colour = NULL, text_colour = NULL,
+                         border_colour = NULL, shade_colour = NULL,
                          ...){
+
+  if(!is.null(header_colour)){
+    header_color <- header_colour
+  }
+  if(!is.null(text_colour)){
+    text_color <- text_colour
+  }
+  if(!is.null(border_colour)){
+    border_color <- border_colour
+  }
+  if(!is.null(shade_colour)){
+    shade_color <- shade_colour
+  }
 
   # Set NA values to ""
   if(na.rm){
@@ -93,9 +114,18 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
 
   alt_row_col <- if(shade_color == "lightgray"){
     fauna_colors("lightgray")
-  } else {
+  } else if(shade_color == "lightblue"){
     fauna_colors("lightblue")
+  } else if(shade_color %in% names(return_full_palette())){
+    fauna_colors(shade_color)
+  } else {
+    shade_color
   }
+
+  if(!(shade_color %in% names(return_full_palette()))){
+    warning(paste0("shade_colo(u)r '", shade_color, "' is not in the Faunalytics color palette."))
+  }
+
 
   # Set table characteristics
   foo <- foo %>%
@@ -129,8 +159,7 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
       table.border.bottom.style = "hidden",
       column_labels.border.bottom.color = unname(border_color))
 
-  # If data has more than 4 rows, alternate shade rows for readability
-  if(nrow(data) > 4 & shade_color == "lightblue"){
+  if(shade & shade_color == "lightblue"){
     foo <- foo %>% tab_style(
       style = list(
         cell_fill(color = alt_row_col),
@@ -139,7 +168,7 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
       # Apply shading to every other row beginning at row 2
       locations = cells_body(rows = seq(2,nrow(data),2))
     )
-  } else if(nrow(data) > 4){
+  } else if(shade){
     foo <- foo %>% tab_style(
       style = list(
         cell_fill(color = alt_row_col)

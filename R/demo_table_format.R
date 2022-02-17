@@ -16,6 +16,8 @@
 #' @param include_css If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE
 #' @param write If TRUE, write results to the file specified in the path argument. FALSE by default.
 #' @param path File path to be written to if write is TRUE. "table.txt" in working directory by default.
+#' @param stripe_colour See stripe_color
+#' @param text_colour See text_color
 #' @param ... Other arguments
 #' @return An HTML table or raw HTML
 #' @export
@@ -45,6 +47,7 @@ demo_table_format <- function(data, char_var = Characteristic,
                               na.rm = T,
                               return_html = FALSE, include_css = TRUE,
                               write = FALSE, path = "table.txt",
+                              stripe_colour = NULL, text_colour = NULL,
                               ...){
 
    # Set NA values to ""
@@ -57,6 +60,14 @@ demo_table_format <- function(data, char_var = Characteristic,
    #          )
    #       }))
    # }
+
+
+   if(!is.null(stripe_colour)){
+      stripe_color <- stripe_colour
+   }
+   if(!is.null(text_colour)){
+      text_color <- text_colour
+   }
 
   # Stripe fill
   stripe_fill <- gsub(" ", "", tolower(stripe_fill)) # Standardize

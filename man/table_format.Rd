@@ -11,6 +11,7 @@ table_format(
   cell_fill = "white",
   text_color = "darkgray",
   border_color = "white",
+  shade = TRUE,
   shade_color = "lightblue",
   na.rm = TRUE,
   h_aligns = NULL,
@@ -19,6 +20,10 @@ table_format(
   include_css = TRUE,
   write = FALSE,
   path = "table.txt",
+  header_colour = NULL,
+  text_colour = NULL,
+  border_colour = NULL,
+  shade_colour = NULL,
   ...
 )
 }
@@ -34,6 +39,8 @@ table_format(
 \item{text_color}{Color of table body text. Dark gray by default}
 
 \item{border_color}{Color of cell borders. White by default}
+
+\item{shade}{Shade alternate rows. TRUE by default. Begins with the second row.}
 
 \item{shade_color}{Color of alternate row shading. Light blue by default.
 Currently, the only other option is "lightgray", which will also make text in those dark.}
@@ -62,6 +69,14 @@ All other columns can be assigned a default width value by using everything() on
 \item{write}{If TRUE, write results to the file specified in the path argument. FALSE by default.}
 
 \item{path}{File path to be written to if write is TRUE. "table.txt" in working directory by default.}
+
+\item{header_colour}{See header_color}
+
+\item{text_colour}{See text_color}
+
+\item{border_colour}{See border_color}
+
+\item{shade_colour}{See shade_color}
 
 \item{...}{Other arguments}
 }
