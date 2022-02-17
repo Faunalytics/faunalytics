@@ -14,6 +14,7 @@ demo_table_format(
   stripe_color = "white",
   text_color = "darkgray",
   na.rm = T,
+  caption = NULL,
   return_html = FALSE,
   include_css = TRUE,
   write = FALSE,
@@ -42,6 +43,8 @@ These are the rows that will be fill in a different color.}
 
 \item{na.rm}{Remove NA values from character columns and replace with blanks. TRUE by default.
 If FALSE, NA will show up in any cells where it appears in the data you feed into this function.}
+
+\item{caption}{A string to appear as a caption below the table.}
 
 \item{return_html}{If TRUE, returns raw HTML of table. FALSE by default}
 

@@ -16,6 +16,7 @@ table_format(
   na.rm = TRUE,
   h_aligns = NULL,
   col_widths = NULL,
+  caption = NULL,
   return_html = FALSE,
   include_css = TRUE,
   write = FALSE,
@@ -61,6 +62,8 @@ will allow you to set the percentage of the table width each column should make 
 matches(), one_of(), and everything() can be used in the LHS. Subsequent expressions that operate on the columns assigned
 previously will result in overwriting column width values (both in the same cols_width() call and across separate calls).
 All other columns can be assigned a default width value by using everything() on the left-hand side. See examples.}
+
+\item{caption}{A string to appear as a caption below the table.}
 
 \item{return_html}{If TRUE, returns raw HTML of table. FALSE by default}
 

@@ -12,6 +12,7 @@
 #' @param text_color Color of text in non-characteristic rows and header. "darkgray" by default.
 #' @param na.rm Remove NA values from character columns and replace with blanks. TRUE by default.
 #' If FALSE, NA will show up in any cells where it appears in the data you feed into this function.
+#' @param caption A string to appear as a caption below the table.
 #' @param return_html If TRUE, returns raw HTML of table. FALSE by default
 #' @param include_css If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE
 #' @param write If TRUE, write results to the file specified in the path argument. FALSE by default.
@@ -44,7 +45,7 @@ demo_table_format <- function(data, char_var = Characteristic,
                               chars = c("Gender", "Race", "Region", "Companion Animals", "Went Fishing", "Handled Chickens"),
                               char_header_blank = FALSE, stripe_fill = "lightblue",
                               stripe_color = "white", text_color = "darkgray",
-                              na.rm = T,
+                              na.rm = T, caption = NULL,
                               return_html = FALSE, include_css = TRUE,
                               write = FALSE, path = "table.txt",
                               stripe_colour = NULL, text_colour = NULL,
@@ -137,6 +138,12 @@ data <- data %>% mutate(groupr = case_when(
      locations = list(cells_body(columns = 1),
                       cells_column_labels(columns = 1))
    )
+
+ if(!is.null(caption)){
+    foo <- foo %>%
+       tab_source_note(source_note = caption) %>%
+       tab_options(table_body.border.bottom.color  = "white")
+ }
 
  if(return_html){
     foo <- return_html(foo, include_css = include_css, write = write, path = path)

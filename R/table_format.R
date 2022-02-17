@@ -26,6 +26,7 @@
 #' matches(), one_of(), and everything() can be used in the LHS. Subsequent expressions that operate on the columns assigned
 #' previously will result in overwriting column width values (both in the same cols_width() call and across separate calls).
 #' All other columns can be assigned a default width value by using everything() on the left-hand side. See examples.
+#' @param caption A string to appear as a caption below the table.
 #' @param return_html If TRUE, returns raw HTML of table. FALSE by default
 #' @param include_css If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE
 #' @param write If TRUE, write results to the file specified in the path argument. FALSE by default.
@@ -54,7 +55,7 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
                          cell_fill = "white", text_color = "darkgray",
                          border_color = "white", shade = TRUE,
                          shade_color = "lightblue", na.rm = TRUE,
-                         h_aligns = NULL, col_widths = NULL,
+                         h_aligns = NULL, col_widths = NULL, caption = NULL,
                          return_html = FALSE, include_css = TRUE,
                          write = FALSE, path = "table.txt",
                          header_colour = NULL, text_colour = NULL,
@@ -201,6 +202,11 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
       )
   }
 
+  if(!is.null(caption)){
+    foo <- foo %>%
+      tab_source_note(source_note = caption) %>%
+      tab_options(table_body.border.bottom.color  = "white")
+  }
 
   if(return_html){
     foo <- return_html(foo, include_css = include_css, write = write, path = path)
