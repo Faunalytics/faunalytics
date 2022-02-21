@@ -13,6 +13,7 @@ table_format(
   border_color = "white",
   shade = TRUE,
   shade_color = "lightblue",
+  shade_text = NULL,
   na.rm = TRUE,
   h_aligns = NULL,
   col_widths = NULL,
@@ -45,6 +46,9 @@ table_format(
 
 \item{shade_color}{Color of alternate row shading. Light blue by default.
 Currently, the only other option is "lightgray", which will also make text in those dark.}
+
+\item{shade_text}{Color of text in shaded (or alternate if shaded = FALSE) rows.
+Light and dark default colors are "white" and "darkgray".}
 
 \item{na.rm}{Remove NA values from character columns and replace with blanks. TRUE by default.
 If FALSE, NA will show up in any cells where it appears in the data you feed into this function.}

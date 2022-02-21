@@ -12,6 +12,8 @@
 #' @param shade Shade alternate rows. TRUE by default. Begins with the second row.
 #' @param shade_color Color of alternate row shading. Light blue by default.
 #' Currently, the only other option is "lightgray", which will also make text in those dark.
+#' @param shade_text Color of text in shaded (or alternate if shaded = FALSE) rows.
+#' Light and dark default colors are "white" and "darkgray".
 #' @param na.rm Remove NA values from character columns and replace with blanks. TRUE by default.
 #' If FALSE, NA will show up in any cells where it appears in the data you feed into this function.
 #' @param h_aligns Horizontal alignment of columns. If this is not specified, R will guess.
@@ -56,8 +58,9 @@
 table_format <- function(data, header_fill = "blue", header_color = "white",
                          cell_fill = "white", text_color = "darkgray",
                          border_color = "white", shade = TRUE,
-                         shade_color = "lightblue", na.rm = TRUE,
-                         h_aligns = NULL, col_widths = NULL, caption = NULL,
+                         shade_color = "lightblue", shade_text = NULL,
+                         na.rm = TRUE, h_aligns = NULL,
+                         col_widths = NULL, caption = NULL,
                          return_html = FALSE, include_css = TRUE,
                          write = FALSE, path = "table.txt",
                          header_colour = NULL, text_colour = NULL,
@@ -177,6 +180,17 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
         cell_fill(color = alt_row_col)
       ),
       # Apply shading to every other row beginning at row 2
+      locations = cells_body(rows = seq(2,nrow(data),2))
+    )
+  }
+
+  if(!is.null(shade_text)){
+    shade_text <- gsub(" ", "", tolower(shade_text))
+    if(shade_text %in% names(return_full_palette())){
+      shade_text <- fauna_colors(shade_text)
+    }
+    foo <- foo %>% tab_style(
+      style = list(cell_text(color = shade_text)),
       locations = cells_body(rows = seq(2,nrow(data),2))
     )
   }
