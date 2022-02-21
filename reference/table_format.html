@@ -113,7 +113,9 @@ matches(), one_of(), and everything() can be used in the LHS. Subsequent express
 previously will result in overwriting column width values (both in the same cols_width() call and across separate calls).
 All other columns can be assigned a default width value by using everything() on the left-hand side. See examples.</p></dd>
 <dt>caption</dt>
-<dd><p>A string to appear as a caption below the table.</p></dd>
+<dd><p>A string to appear as a caption below the table. This is essentially functioning like a value in the additional row spanning the width of the table.
+Because of that, captions longer than the width of the table will stretch the table.
+A solution to this is to insert &lt;br&gt; in the raw HTML where you want line breaks in the caption.</p></dd>
 <dt>return_html</dt>
 <dd><p>If TRUE, returns raw HTML of table. FALSE by default</p></dd>
 <dt>include_css</dt>
@@ -141,12 +143,12 @@ All other columns can be assigned a default width value by using everything() on
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">table_format</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div id="nvejjvhpcq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div id="pajemwpabb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;style&gt;html {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_table {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_table {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   display: table;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-collapse: collapse;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-left: auto;</span>
@@ -171,7 +173,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-left-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: center;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #FFFFFF;</span>
@@ -183,7 +185,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_title {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_title {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 125%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: initial;</span>
@@ -195,7 +197,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_subtitle {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_subtitle {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 85%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: initial;</span>
@@ -207,13 +209,13 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_bottom_border {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_bottom_border {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_col_headings {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_col_headings {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
@@ -228,7 +230,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_col_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_col_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -248,7 +250,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   overflow-x: hidden;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_column_spanner_outer {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_column_spanner_outer {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -260,15 +262,15 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 4px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_column_spanner_outer:first-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_column_spanner_outer:first-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_column_spanner_outer:last-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_column_spanner_outer:last-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_column_spanner {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_column_spanner {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #FFFFFF;</span>
@@ -280,7 +282,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   width: 100%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_group_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_group_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -305,7 +307,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: middle;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_empty_group_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_empty_group_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding: 0.5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
@@ -320,15 +322,15 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: middle;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_from_md &gt; :first-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_from_md &gt; :first-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-top: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_from_md &gt; :last-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_from_md &gt; :last-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-bottom: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -347,7 +349,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   overflow-x: hidden;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_stub {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_stub {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -360,7 +362,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_stub_row_group {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_stub_row_group {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -374,11 +376,11 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: top;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_row_group_first td {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_row_group_first td {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-transform: inherit;</span>
@@ -388,16 +390,16 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_first_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_first_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_first_summary_row.thick {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_first_summary_row.thick {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_last_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_last_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -407,7 +409,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_grand_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_grand_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-transform: inherit;</span>
@@ -417,7 +419,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_first_grand_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_first_grand_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -427,11 +429,11 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_striped {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_striped {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: rgba(128, 128, 128, 0.05);</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_table_body {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_table_body {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
@@ -440,7 +442,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_footnotes {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_footnotes {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: none;</span>
@@ -454,7 +456,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_footnote {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_footnote {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin: 0px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 90%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 4px;</span>
@@ -463,7 +465,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_sourcenotes {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_sourcenotes {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: none;</span>
@@ -477,7 +479,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_sourcenote {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_sourcenote {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 90%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 4px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 4px;</span>
@@ -485,60 +487,60 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_left {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_left {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: left;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_center {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_center {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: center;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_right {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_right {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: right;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-variant-numeric: tabular-nums;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_font_normal {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_font_normal {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: normal;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_font_bold {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_font_bold {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: bold;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_font_italic {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_font_italic {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-style: italic;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_super {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_super {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 65%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_footnote_marks {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_footnote_marks {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-style: italic;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: normal;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 75%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.4em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_asterisk {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_asterisk {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_slash_mark {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_slash_mark {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.7em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.7em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.15em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_fraction_numerator {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_fraction_numerator {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.45em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #nvejjvhpcq .gt_fraction_denominator {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #pajemwpabb .gt_fraction_denominator {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: -0.05em;</span>
@@ -667,12 +669,12 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-in">    <span class="fu">everything</span><span class="op">(</span><span class="op">)</span> <span class="op">~</span> <span class="fu">pct</span><span class="op">(</span><span class="fl">.15</span><span class="op">)</span></span>
 <span class="r-in">  <span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div id="zgwqqpmckq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div id="ofxhjtlzwb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;style&gt;html {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_table {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_table {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   display: table;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-collapse: collapse;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-left: auto;</span>
@@ -697,7 +699,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-left-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: center;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #FFFFFF;</span>
@@ -709,7 +711,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_title {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_title {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 125%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: initial;</span>
@@ -721,7 +723,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_subtitle {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_subtitle {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 85%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: initial;</span>
@@ -733,13 +735,13 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_bottom_border {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_bottom_border {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_col_headings {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_col_headings {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
@@ -754,7 +756,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_col_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_col_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -774,7 +776,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   overflow-x: hidden;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_column_spanner_outer {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_column_spanner_outer {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -786,15 +788,15 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 4px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_column_spanner_outer:first-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_column_spanner_outer:first-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_column_spanner_outer:last-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_column_spanner_outer:last-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_column_spanner {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_column_spanner {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #FFFFFF;</span>
@@ -806,7 +808,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   width: 100%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_group_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_group_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -831,7 +833,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: middle;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_empty_group_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_empty_group_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding: 0.5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
@@ -846,15 +848,15 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: middle;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_from_md &gt; :first-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_from_md &gt; :first-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-top: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_from_md &gt; :last-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_from_md &gt; :last-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-bottom: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -873,7 +875,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   overflow-x: hidden;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_stub {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_stub {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -886,7 +888,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_stub_row_group {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_stub_row_group {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -900,11 +902,11 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: top;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_row_group_first td {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_row_group_first td {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-transform: inherit;</span>
@@ -914,16 +916,16 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_first_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_first_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_first_summary_row.thick {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_first_summary_row.thick {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_last_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_last_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -933,7 +935,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_grand_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_grand_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-transform: inherit;</span>
@@ -943,7 +945,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_first_grand_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_first_grand_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -953,11 +955,11 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_striped {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_striped {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: rgba(128, 128, 128, 0.05);</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_table_body {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_table_body {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
@@ -966,7 +968,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_footnotes {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_footnotes {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: none;</span>
@@ -980,7 +982,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_footnote {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_footnote {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin: 0px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 90%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 4px;</span>
@@ -989,7 +991,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_sourcenotes {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_sourcenotes {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: none;</span>
@@ -1003,7 +1005,7 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_sourcenote {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_sourcenote {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 90%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 4px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 4px;</span>
@@ -1011,60 +1013,60 @@ All other columns can be assigned a default width value by using everything() on
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_left {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_left {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: left;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_center {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_center {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: center;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_right {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_right {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: right;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-variant-numeric: tabular-nums;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_font_normal {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_font_normal {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: normal;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_font_bold {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_font_bold {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: bold;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_font_italic {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_font_italic {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-style: italic;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_super {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_super {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 65%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_footnote_marks {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_footnote_marks {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-style: italic;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: normal;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 75%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.4em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_asterisk {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_asterisk {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_slash_mark {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_slash_mark {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.7em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.7em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.15em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_fraction_numerator {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_fraction_numerator {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.45em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #zgwqqpmckq .gt_fraction_denominator {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #ofxhjtlzwb .gt_fraction_denominator {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: -0.05em;</span>
