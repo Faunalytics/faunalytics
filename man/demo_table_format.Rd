@@ -44,7 +44,9 @@ These are the rows that will be fill in a different color.}
 \item{na.rm}{Remove NA values from character columns and replace with blanks. TRUE by default.
 If FALSE, NA will show up in any cells where it appears in the data you feed into this function.}
 
-\item{caption}{A string to appear as a caption below the table.}
+\item{caption}{A string to appear as a caption below the table. This is essentially functioning like a value in the additional row spanning the width of the table.
+Because of that, captions longer than the width of the table will stretch the table.
+A solution to this is to insert <br> in the raw HTML where you want line breaks in the caption.}
 
 \item{return_html}{If TRUE, returns raw HTML of table. FALSE by default}
 
