@@ -23,5 +23,6 @@ Imports:
 	gt,
 	zoo,
 	data.table,
-	usethis
+	usethis,
+	webshot
 URL: https://faunalytics.github.io/faunalytics/

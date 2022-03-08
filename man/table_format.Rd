@@ -15,6 +15,10 @@ table_format(
   shade_color = "lightblue",
   shade_text = NULL,
   na.rm = TRUE,
+  star = FALSE,
+  star_source = NULL,
+  star_dest = NULL,
+  star_alpha = 0.05,
   h_aligns = NULL,
   col_widths = NULL,
   caption = NULL,
@@ -22,6 +26,7 @@ table_format(
   include_css = TRUE,
   write = FALSE,
   path = "table.txt",
+  image_path = NULL,
   header_colour = NULL,
   text_colour = NULL,
   border_colour = NULL,
@@ -53,6 +58,15 @@ Light and dark default colors are "white" and "darkgray".}
 \item{na.rm}{Remove NA values from character columns and replace with blanks. TRUE by default.
 If FALSE, NA will show up in any cells where it appears in the data you feed into this function.}
 
+\item{star}{If TRUE, will add an asterisk to star_dest values where star_source is less than star_alpha (0.05  by default). Requires star_source and star_dest to be specified. FALSE by default.}
+
+\item{star_source}{Source column from which use of asterisk is determined. For example, if your p-values are stored in a column called "p_vals", you would set this to p_vals}
+
+\item{star_dest}{Destination column to apply asterisk to based on star_source. This column will be converted to a character.}
+
+\item{star_alpha}{0.05 by default. When using star_source and star_dest, all star_dest values with a star_source value less than star_alpha will be given an asterisk.
+Note that a value like 0.0497 that has been rounded to 0.05 will NOT receive an asterisk if you use the rounded column as your star_source}
+
 \item{h_aligns}{Horizontal alignment of columns. If this is not specified, R will guess.
 You can either specify a single string which will be applied to all columns,
 or a vector of strings where that vector's length is equal to the number of columns in the data.
@@ -78,6 +92,9 @@ A solution to this is to insert <br> in the raw HTML where you want line breaks 
 \item{write}{If TRUE, write results to the file specified in the path argument. FALSE by default.}
 
 \item{path}{File path to be written to if write is TRUE. "table.txt" in working directory by default.}
+
+\item{image_path}{File path for saving table as image (PNG only). If unspecified, the table will not be saved as an image.
+Include ".png" at the end of your file path. Requires phantomjs. If you have never installed phantomjs, run webshot::install_phantomjs()}
 
 \item{header_colour}{See header_color}
 

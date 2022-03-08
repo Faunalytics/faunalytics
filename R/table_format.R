@@ -16,6 +16,11 @@
 #' Light and dark default colors are "white" and "darkgray".
 #' @param na.rm Remove NA values from character columns and replace with blanks. TRUE by default.
 #' If FALSE, NA will show up in any cells where it appears in the data you feed into this function.
+#' @param star If TRUE, will add an asterisk to star_dest values where star_source is less than star_alpha (0.05  by default). Requires star_source and star_dest to be specified. FALSE by default.
+#' @param star_source Source column from which use of asterisk is determined. For example, if your p-values are stored in a column called "p_vals", you would set this to p_vals
+#' @param star_dest Destination column to apply asterisk to based on star_source. This column will be converted to a character.
+#' @param star_alpha 0.05 by default. When using star_source and star_dest, all star_dest values with a star_source value less than star_alpha will be given an asterisk.
+#' Note that a value like 0.0497 that has been rounded to 0.05 will NOT receive an asterisk if you use the rounded column as your star_source
 #' @param h_aligns Horizontal alignment of columns. If this is not specified, R will guess.
 #' You can either specify a single string which will be applied to all columns,
 #' or a vector of strings where that vector's length is equal to the number of columns in the data.
@@ -35,6 +40,8 @@
 #' @param include_css If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE
 #' @param write If TRUE, write results to the file specified in the path argument. FALSE by default.
 #' @param path File path to be written to if write is TRUE. "table.txt" in working directory by default.
+#' @param image_path File path for saving table as image (PNG only). If unspecified, the table will not be saved as an image.
+#' Include ".png" at the end of your file path. Requires phantomjs. If you have never installed phantomjs, run webshot::install_phantomjs()
 #' @param header_colour See header_color
 #' @param text_colour See text_color
 #' @param border_colour See border_color
@@ -44,7 +51,7 @@
 #'
 #' @return An HTML table or raw HTML
 #' @export
-#' @import gt dplyr
+#' @import gt dplyr webshot
 #' @examples table_format(head(mtcars))
 #' table_format(head(cars)) %>% return_html()
 #'
@@ -59,10 +66,13 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
                          cell_fill = "white", text_color = "darkgray",
                          border_color = "white", shade = TRUE,
                          shade_color = "lightblue", shade_text = NULL,
-                         na.rm = TRUE, h_aligns = NULL,
+                         na.rm = TRUE,
+                         star = FALSE, star_source = NULL, star_dest = NULL,
+                         star_alpha = 0.05, h_aligns = NULL,
                          col_widths = NULL, caption = NULL,
                          return_html = FALSE, include_css = TRUE,
                          write = FALSE, path = "table.txt",
+                         image_path = NULL,
                          header_colour = NULL, text_colour = NULL,
                          border_colour = NULL, shade_colour = NULL,
                          ...){
@@ -90,6 +100,16 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
         )
       }))
   }
+
+  if(star){
+    data <- data %>%
+      mutate( {{ star_dest }} := case_when(
+        {{ star_source }} < {{ star_alpha }} ~ paste0( as.character( {{ star_dest }} ), "*"),
+        TRUE ~ as.character( {{ star_dest }} )
+      )
+      )
+  }
+
 
   # Create gt table 'foo' out of data
   foo <- data %>% gt()
@@ -165,6 +185,7 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
       table.border.bottom.style = "hidden",
       column_labels.border.bottom.color = unname(border_color))
 
+  if(nrow(data) > 1){
   if(shade & shade_color == "lightblue"){
     foo <- foo %>% tab_style(
       style = list(
@@ -183,7 +204,6 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
       locations = cells_body(rows = seq(2,nrow(data),2))
     )
   }
-
   if(!is.null(shade_text)){
     shade_text <- gsub(" ", "", tolower(shade_text))
     if(shade_text %in% names(return_full_palette())){
@@ -193,6 +213,7 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
       style = list(cell_text(color = shade_text)),
       locations = cells_body(rows = seq(2,nrow(data),2))
     )
+  }
   }
 
   # Column horizontal alignment
@@ -231,6 +252,13 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
   if(((!return_html) & write)){
     foo <- return_html(foo, include_css = include_css, write = write, path = path)
     foo <- paste("Table saved to ", path)
+  }
+
+  if(!is.null(image_path)){
+    if(webshot::is_phantomjs_installed()){
+      gtsave(foo, image_path)
+    }
+    warning("In order to save tables from this function, you must first install phantomjs using webshot::install_phantomjs()")
   }
 
   return(foo)
