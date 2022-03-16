@@ -2,7 +2,7 @@ pandoc: 2.7.3
 pkgdown: 2.0.2
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-03-08T21:14Z
+last_built: 2022-03-16T21:07Z
 urls:
   reference: https://faunalytics.github.io/faunalytics/reference
   article: https://faunalytics.github.io/faunalytics/articles
