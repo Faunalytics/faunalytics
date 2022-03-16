@@ -257,8 +257,9 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
   if(!is.null(image_path)){
     if(webshot::is_phantomjs_installed()){
       gtsave(foo, image_path)
+    } else {g
+      warning("In order to save tables from this function, you must first install phantomjs using webshot::install_phantomjs()")
     }
-    warning("In order to save tables from this function, you must first install phantomjs using webshot::install_phantomjs()")
   }
 
   return(foo)
