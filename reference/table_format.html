@@ -133,7 +133,7 @@ All other columns can be assigned a default width value by using everything() on
 <dt>caption</dt>
 <dd><p>A string to appear as a caption below the table. This is essentially functioning like a value in the additional row spanning the width of the table.
 Because of that, captions longer than the width of the table will stretch the table.
-A solution to this is to insert &lt;br&gt; in the raw HTML where you want line breaks in the caption.</p></dd>
+A solution to this is to insert `\n` in your text, which will create a linebreak. You may also insert &lt;br&gt; in the raw HTML.</p></dd>
 <dt>return_html</dt>
 <dd><p>If TRUE, returns raw HTML of table. FALSE by default</p></dd>
 <dt>include_css</dt>
@@ -164,12 +164,12 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">table_format</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div id="qkpcmhjhhq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div id="seqnrcnflo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;style&gt;html {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_table {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_table {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   display: table;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-collapse: collapse;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-left: auto;</span>
@@ -194,7 +194,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-left-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: center;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #FFFFFF;</span>
@@ -206,7 +206,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_title {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_title {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 125%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: initial;</span>
@@ -218,7 +218,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_subtitle {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_subtitle {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 85%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: initial;</span>
@@ -230,13 +230,13 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_bottom_border {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_bottom_border {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_col_headings {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_col_headings {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
@@ -251,7 +251,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_col_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_col_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -271,7 +271,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   overflow-x: hidden;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_column_spanner_outer {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_column_spanner_outer {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -283,15 +283,15 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 4px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_column_spanner_outer:first-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_column_spanner_outer:first-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_column_spanner_outer:last-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_column_spanner_outer:last-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_column_spanner {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_column_spanner {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #FFFFFF;</span>
@@ -303,7 +303,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   width: 100%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_group_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_group_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -328,7 +328,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: middle;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_empty_group_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_empty_group_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding: 0.5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
@@ -343,15 +343,15 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: middle;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_from_md &gt; :first-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_from_md &gt; :first-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-top: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_from_md &gt; :last-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_from_md &gt; :last-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-bottom: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -370,7 +370,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   overflow-x: hidden;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_stub {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_stub {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -383,7 +383,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_stub_row_group {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_stub_row_group {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -397,11 +397,11 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: top;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_row_group_first td {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_row_group_first td {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-transform: inherit;</span>
@@ -411,16 +411,16 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_first_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_first_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_first_summary_row.thick {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_first_summary_row.thick {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_last_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_last_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -430,7 +430,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_grand_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_grand_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-transform: inherit;</span>
@@ -440,7 +440,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_first_grand_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_first_grand_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -450,11 +450,11 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_striped {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_striped {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: rgba(128, 128, 128, 0.05);</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_table_body {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_table_body {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
@@ -463,7 +463,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_footnotes {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_footnotes {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: none;</span>
@@ -477,7 +477,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_footnote {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_footnote {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin: 0px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 90%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 4px;</span>
@@ -486,7 +486,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_sourcenotes {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_sourcenotes {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: none;</span>
@@ -500,7 +500,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_sourcenote {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_sourcenote {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 90%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 4px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 4px;</span>
@@ -508,36 +508,36 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_left {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_left {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: left;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_center {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_center {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: center;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_right {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_right {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: right;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-variant-numeric: tabular-nums;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_font_normal {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_font_normal {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: normal;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_font_bold {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_font_bold {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: bold;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_font_italic {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_font_italic {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-style: italic;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_super {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_super {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 65%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_two_val_uncert {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_two_val_uncert {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   display: inline-block;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 1em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: right;</span>
@@ -546,31 +546,31 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-left: 0.1em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_footnote_marks {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_footnote_marks {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-style: italic;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: normal;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 75%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.4em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_asterisk {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_asterisk {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_slash_mark {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_slash_mark {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.7em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.7em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.15em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_fraction_numerator {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_fraction_numerator {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.45em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #qkpcmhjhhq .gt_fraction_denominator {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #seqnrcnflo .gt_fraction_denominator {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: -0.05em;</span>
@@ -594,72 +594,138 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/thead&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tbody class="gt_table_body"&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;21.0&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;6&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;160&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;110&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3.90&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;2.620&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;16.46&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;0&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;1&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;4&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;4&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;21.0&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;6&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;160&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;110&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3.90&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;2.875&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;17.02&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;0&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;1&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;4&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;4&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;22.8&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;4&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;108&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;93&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3.85&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;2.320&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;18.61&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;1&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;1&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;4&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;1&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;21.4&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;6&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;258&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;110&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3.08&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3.215&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;19.44&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;1&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;0&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;1&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;18.7&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;8&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;360&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;175&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3.15&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3.440&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;17.02&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;0&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;0&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;2&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;18.1&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;6&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;225&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;105&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;2.76&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3.460&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;20.22&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;1&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;0&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;3&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;1&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;21&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;6&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;160&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;110&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3.9&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;2.62&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;16.46&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;0&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;21&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;6&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;160&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;110&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3.9&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;2.875&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;17.02&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;0&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;22.8&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;108&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;93&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3.85&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;2.32&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;18.61&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;21.4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;6&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;258&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;110&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3.08&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3.215&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;19.44&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;0&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;18.7&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;8&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;360&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;175&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3.15&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3.44&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;17.02&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;0&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;0&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;2&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;18.1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;6&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;225&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;105&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;2.76&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3.46&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;20.22&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;0&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;3&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tbody&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   </span>
@@ -675,18 +741,30 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/thead&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tbody style="border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3;"&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;4&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;2&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;4&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;10&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;7&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;4&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;7&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;22&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;8&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;16&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;9&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;10&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;2&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;10&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;7&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;7&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;22&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;8&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;16&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;9&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums; background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;10&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tbody&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   </span>
@@ -699,12 +777,12 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-in">    <span class="fu">everything</span><span class="op">(</span><span class="op">)</span> <span class="op">~</span> <span class="fu">pct</span><span class="op">(</span><span class="fl">.15</span><span class="op">)</span></span>
 <span class="r-in">  <span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div id="lzupbsxcjd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div id="tsmahjlhor" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;style&gt;html {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_table {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_table {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   display: table;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-collapse: collapse;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-left: auto;</span>
@@ -729,7 +807,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-left-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: center;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #FFFFFF;</span>
@@ -741,7 +819,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_title {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_title {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 125%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: initial;</span>
@@ -753,7 +831,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_subtitle {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_subtitle {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 85%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: initial;</span>
@@ -765,13 +843,13 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_bottom_border {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_bottom_border {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_col_headings {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_col_headings {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
@@ -786,7 +864,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_col_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_col_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -806,7 +884,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   overflow-x: hidden;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_column_spanner_outer {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_column_spanner_outer {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -818,15 +896,15 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 4px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_column_spanner_outer:first-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_column_spanner_outer:first-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_column_spanner_outer:last-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_column_spanner_outer:last-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_column_spanner {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_column_spanner {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #FFFFFF;</span>
@@ -838,7 +916,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   width: 100%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_group_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_group_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -863,7 +941,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: middle;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_empty_group_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_empty_group_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding: 0.5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
@@ -878,15 +956,15 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: middle;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_from_md &gt; :first-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_from_md &gt; :first-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-top: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_from_md &gt; :last-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_from_md &gt; :last-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-bottom: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -905,7 +983,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   overflow-x: hidden;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_stub {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_stub {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -918,7 +996,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_stub_row_group {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_stub_row_group {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -932,11 +1010,11 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: top;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_row_group_first td {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_row_group_first td {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-transform: inherit;</span>
@@ -946,16 +1024,16 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_first_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_first_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_first_summary_row.thick {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_first_summary_row.thick {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_last_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_last_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -965,7 +1043,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_grand_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_grand_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-transform: inherit;</span>
@@ -975,7 +1053,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_first_grand_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_first_grand_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -985,11 +1063,11 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_striped {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_striped {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: rgba(128, 128, 128, 0.05);</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_table_body {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_table_body {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
@@ -998,7 +1076,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_footnotes {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_footnotes {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: none;</span>
@@ -1012,7 +1090,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_footnote {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_footnote {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin: 0px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 90%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 4px;</span>
@@ -1021,7 +1099,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_sourcenotes {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_sourcenotes {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: none;</span>
@@ -1035,7 +1113,7 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_sourcenote {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_sourcenote {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 90%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 4px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 4px;</span>
@@ -1043,36 +1121,36 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_left {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_left {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: left;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_center {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_center {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: center;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_right {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_right {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: right;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-variant-numeric: tabular-nums;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_font_normal {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_font_normal {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: normal;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_font_bold {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_font_bold {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: bold;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_font_italic {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_font_italic {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-style: italic;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_super {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_super {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 65%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_two_val_uncert {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_two_val_uncert {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   display: inline-block;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 1em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: right;</span>
@@ -1081,31 +1159,31 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-left: 0.1em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_footnote_marks {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_footnote_marks {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-style: italic;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: normal;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 75%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.4em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_asterisk {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_asterisk {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_slash_mark {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_slash_mark {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.7em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.7em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.15em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_fraction_numerator {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_fraction_numerator {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.45em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #lzupbsxcjd .gt_fraction_denominator {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #tsmahjlhor .gt_fraction_denominator {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: -0.05em;</span>
@@ -1128,30 +1206,54 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 <span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/thead&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tbody class="gt_table_body"&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;21.0&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;6&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;160&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;110&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;21.0&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;6&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;160&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;110&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;22.8&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;4&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;108&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;93&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;21.4&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;6&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;258&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;110&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;18.7&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;8&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;360&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;175&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;18.1&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;6&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;225&lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;105&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;21&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;6&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;160&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;110&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;21&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;6&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;160&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;110&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;22.8&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;108&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;93&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;21.4&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;6&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;258&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;110&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;18.7&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;8&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;360&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #FFFFFF; color: #333333; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;175&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;tr&gt;&lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;18.1&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;6&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;225&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;td class="gt_row gt_right" style="background-color: #5FB7E5; color: #FFFFFF; border-left-width: 1px; border-left-style: solid; border-left-color: white; border-right-width: 1px; border-right-style: solid; border-right-color: white; border-top-width: 1px; border-top-style: solid; border-top-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: white;"&gt;&lt;div class='gt_from_md'&gt;&lt;p&gt;105&lt;/p&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tbody&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   </span>
