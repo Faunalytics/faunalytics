@@ -83,7 +83,7 @@ All other columns can be assigned a default width value by using everything() on
 
 \item{caption}{A string to appear as a caption below the table. This is essentially functioning like a value in the additional row spanning the width of the table.
 Because of that, captions longer than the width of the table will stretch the table.
-A solution to this is to insert <br> in the raw HTML where you want line breaks in the caption.}
+A solution to this is to insert `\\n` in your text, which will create a linebreak. You may also insert <br> in the raw HTML.}
 
 \item{return_html}{If TRUE, returns raw HTML of table. FALSE by default}
 

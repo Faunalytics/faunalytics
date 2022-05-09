@@ -14,7 +14,7 @@
 #' If FALSE, NA will show up in any cells where it appears in the data you feed into this function.
 #' @param caption A string to appear as a caption below the table. This is essentially functioning like a value in the additional row spanning the width of the table.
 #' Because of that, captions longer than the width of the table will stretch the table.
-#' A solution to this is to insert <br> in the raw HTML where you want line breaks in the caption.
+#' A solution to this is to insert `\\n` in your text, which will create a linebreak. You may also insert <br> in the raw HTML.
 #' @param return_html If TRUE, returns raw HTML of table. FALSE by default
 #' @param include_css If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE
 #' @param write If TRUE, write results to the file specified in the path argument. FALSE by default.
@@ -119,6 +119,11 @@ data <- data %>% mutate(groupr = case_when(
  group_vec <- data %>% ungroup() %>% mutate(row_numr = 1:n()) %>%
    filter(cat_indicator == 1) %>% pull(row_numr)
 
+ data <- data %>%
+   mutate(across(where(is.character), \(x){
+     x = gsub("\\s\\n\\s", "<br>", x)
+   } ))
+
  foo <- data %>%
    select(-cat_indicator) %>%
    table_format() %>%
@@ -142,10 +147,16 @@ data <- data %>% mutate(groupr = case_when(
    )
 
  if(!is.null(caption)){
-    foo <- foo %>%
-       tab_source_note(source_note = caption) %>%
-       tab_options(table_body.border.bottom.color  = "white")
+
+   caption <- caption |> stringr::str_split("\\<br\\>|\\s\\n\\s") |> unlist() |> trimws()
+
+   foo <- foo %>%
+     tab_source_note(source_note = caption) %>%
+     tab_options(table_body.border.bottom.color  = "white")
  }
+
+ foo <- foo %>%
+   fmt_markdown(columns = everything(), rows = everything())
 
  if(return_html){
     foo <- return_html(foo, include_css = include_css, write = write, path = path)

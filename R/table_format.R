@@ -35,7 +35,7 @@
 #' All other columns can be assigned a default width value by using everything() on the left-hand side. See examples.
 #' @param caption A string to appear as a caption below the table. This is essentially functioning like a value in the additional row spanning the width of the table.
 #' Because of that, captions longer than the width of the table will stretch the table.
-#' A solution to this is to insert <br> in the raw HTML where you want line breaks in the caption.
+#' A solution to this is to insert `\\n` in your text, which will create a linebreak. You may also insert <br> in the raw HTML.
 #' @param return_html If TRUE, returns raw HTML of table. FALSE by default
 #' @param include_css If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE
 #' @param write If TRUE, write results to the file specified in the path argument. FALSE by default.
@@ -51,7 +51,7 @@
 #'
 #' @return An HTML table or raw HTML
 #' @export
-#' @import gt dplyr webshot
+#' @import gt dplyr webshot stringr
 #' @examples table_format(head(mtcars))
 #' table_format(head(cars)) %>% return_html()
 #'
@@ -111,8 +111,12 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
   }
 
 
-  # Create gt table 'foo' out of data
-  foo <- data %>% gt()
+  # Create gt table 'foo' out of data after replacing \s\n\s with <br>
+  foo <- data %>%
+    mutate(across(where(is.character), \(x){
+      x = gsub("\\s\\n\\s", "<br>", x)
+    } )) %>%
+  gt()
 
   # Header fill
   header_fill <- gsub(" ", "", tolower(header_fill)) # Standardize
@@ -240,10 +244,17 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
   }
 
   if(!is.null(caption)){
+
+    caption <- caption |> stringr::str_split("\\<br\\>|\\s\\n\\s") |> unlist() |> trimws()
+
+
     foo <- foo %>%
       tab_source_note(source_note = caption) %>%
       tab_options(table_body.border.bottom.color  = "white")
   }
+
+  foo <- foo %>%
+    fmt_markdown(columns = everything(), rows = everything())
 
   if(return_html){
     foo <- return_html(foo, include_css = include_css, write = write, path = path)
