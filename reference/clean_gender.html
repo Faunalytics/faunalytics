@@ -65,6 +65,10 @@ returns the categorized values included in gender_walk.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">test_data</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">clean_gender</span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">gender</span>, <span class="va">gender_clean</span><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following values are not in the gender walk dictionary and have been assigned a value of NA in the newly created variable:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   gender gender_clean</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
