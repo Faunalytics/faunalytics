@@ -42,45 +42,62 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">donut_maker</span><span class="op">(</span>
-  <span class="va">x</span>,
-  color <span class="op">=</span> <span class="st">"green"</span>,
-  empty_color <span class="op">=</span> <span class="st">"lightgray"</span>,
-  label <span class="op">=</span> <span class="cn">NULL</span>,
-  label_color <span class="op">=</span> <span class="cn">NULL</span>,
-  colour <span class="op">=</span> <span class="cn">NULL</span>,
-  empty_colour <span class="op">=</span> <span class="cn">NULL</span>,
-  label_colour <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">donut_maker</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  color <span class="op">=</span> <span class="st">"green"</span>,</span>
+<span>  empty_color <span class="op">=</span> <span class="st">"lightgray"</span>,</span>
+<span>  label <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  label_color <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  colour <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  empty_colour <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  label_colour <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>Percentage to make donut graph of. Must be a numeric in decimal form.</p></dd>
+
+
 <dt>color</dt>
 <dd><p>Fill color of graph. Green by default.</p></dd>
+
+
 <dt>empty_color</dt>
 <dd><p>Color for remaining area. Light gray by default.</p></dd>
+
+
 <dt>label</dt>
 <dd><p>Text for middle of graph. By default, x written as a percentage. Set to "" for blank.</p></dd>
+
+
 <dt>label_color</dt>
 <dd><p>Color of text for middle of graph. By default, this is the same as color.</p></dd>
+
+
 <dt>colour</dt>
 <dd><p>See colour</p></dd>
+
+
 <dt>empty_colour</dt>
 <dd><p>See empty_color</p></dd>
+
+
 <dt>label_colour</dt>
 <dd><p>See label_color</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A ggplot graph</p>
+    
+
+<p>A ggplot graph</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">donut_maker</span><span class="op">(</span><span class="fl">.25</span>, <span class="st">"red"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">donut_maker</span><span class="op">(</span><span class="fl">.25</span>, <span class="st">"red"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="donut_maker-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -93,7 +110,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

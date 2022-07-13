@@ -45,98 +45,131 @@ The exception to this is for repeated options (e.g., "Yes" and "No"), which will
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">demo_table_format</span><span class="op">(</span>
-  <span class="va">data</span>,
-  char_var <span class="op">=</span> <span class="va">Characteristic</span>,
-  chars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>, <span class="st">"Race"</span>, <span class="st">"Region"</span>, <span class="st">"Companion Animals"</span>, <span class="st">"Went Fishing"</span>,
-    <span class="st">"Handled Chickens"</span><span class="op">)</span>,
-  char_header_blank <span class="op">=</span> <span class="cn">FALSE</span>,
-  stripe_fill <span class="op">=</span> <span class="st">"lightblue"</span>,
-  stripe_color <span class="op">=</span> <span class="st">"white"</span>,
-  text_color <span class="op">=</span> <span class="st">"darkgray"</span>,
-  na.rm <span class="op">=</span> <span class="cn">T</span>,
-  caption <span class="op">=</span> <span class="cn">NULL</span>,
-  return_html <span class="op">=</span> <span class="cn">FALSE</span>,
-  include_css <span class="op">=</span> <span class="cn">TRUE</span>,
-  write <span class="op">=</span> <span class="cn">FALSE</span>,
-  path <span class="op">=</span> <span class="st">"table.txt"</span>,
-  stripe_colour <span class="op">=</span> <span class="cn">NULL</span>,
-  text_colour <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">demo_table_format</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  char_var <span class="op">=</span> <span class="va">Characteristic</span>,</span>
+<span>  chars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>, <span class="st">"Race"</span>, <span class="st">"Region"</span>, <span class="st">"Companion Animals"</span>, <span class="st">"Went Fishing"</span>,</span>
+<span>    <span class="st">"Handled Chickens"</span><span class="op">)</span>,</span>
+<span>  char_header_blank <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  stripe_fill <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
+<span>  stripe_color <span class="op">=</span> <span class="st">"white"</span>,</span>
+<span>  text_color <span class="op">=</span> <span class="st">"darkgray"</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>  caption <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  return_html <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  include_css <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  write <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"table.txt"</span>,</span>
+<span>  stripe_colour <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  text_colour <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
 <dd><p>Required. A dataframe to be formatted as an html table. This dataframe should have the desired column names, with the exception of the main characteristic variable name, which can be overriden to blank.</p></dd>
+
+
 <dt>char_var</dt>
 <dd><p>Required. Variable that contains characteristics. Set to Characteristic by default.</p></dd>
+
+
 <dt>chars</dt>
 <dd><p>A vector of quoted characteristic groups. Table will be ordered in the same order these groups are listed.
 These should NOT include specific traits (e.g., "Woman"), but instead, only the groups those traits fall into (e.g. "Gender").
 These are the rows that will be fill in a different color.</p></dd>
+
+
 <dt>char_header_blank</dt>
 <dd><p>If TRUE, the column specified in char_var will be set to blank. FALSE by default.</p></dd>
+
+
 <dt>stripe_fill</dt>
 <dd><p>Color to fill characteristic row. "lightblue" by default.</p></dd>
+
+
 <dt>stripe_color</dt>
 <dd><p>Color of text in characteristic row. "white" by default.</p></dd>
+
+
 <dt>text_color</dt>
 <dd><p>Color of text in non-characteristic rows and header. "darkgray" by default.</p></dd>
+
+
 <dt>na.rm</dt>
 <dd><p>Remove NA values from character columns and replace with blanks. TRUE by default.
 If FALSE, NA will show up in any cells where it appears in the data you feed into this function.</p></dd>
+
+
 <dt>caption</dt>
 <dd><p>A string to appear as a caption below the table. This is essentially functioning like a value in the additional row spanning the width of the table.
 Because of that, captions longer than the width of the table will stretch the table.
 A solution to this is to insert `\n` in your text, which will create a linebreak. You may also insert &lt;br&gt; in the raw HTML.</p></dd>
+
+
 <dt>return_html</dt>
 <dd><p>If TRUE, returns raw HTML of table. FALSE by default</p></dd>
+
+
 <dt>include_css</dt>
 <dd><p>If TRUE, returns inline CSS for table formatting. TRUE by default. This is only returned if return_html is also TRUE</p></dd>
+
+
 <dt>write</dt>
 <dd><p>If TRUE, write results to the file specified in the path argument. FALSE by default.</p></dd>
+
+
 <dt>path</dt>
 <dd><p>File path to be written to if write is TRUE. "table.txt" in working directory by default.</p></dd>
+
+
 <dt>stripe_colour</dt>
 <dd><p>See stripe_color</p></dd>
+
+
 <dt>text_colour</dt>
 <dd><p>See text_color</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An HTML table or raw HTML</p>
+    
+
+<p>An HTML table or raw HTML</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">temp_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in"><span class="st">"Trait"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>, <span class="st">"Woman or Other"</span>, <span class="st">"Man"</span>,</span>
-<span class="r-in">    <span class="st">"Income"</span>, <span class="st">"Less than $25,000"</span>, <span class="st">"$25,000 to $49,999"</span>, <span class="st">"$50,000 to $74,999"</span>,</span>
-<span class="r-in">    <span class="st">"$75,000 to $99,999"</span>, <span class="st">"$100,000 or more"</span>,</span>
-<span class="r-in">    <span class="st">"Education"</span>, <span class="st">"Less than high school graduate"</span>,</span>
-<span class="r-in">    <span class="st">"High school graduate"</span>, <span class="st">"Some college or university, no degree"</span>,</span>
-<span class="r-in">    <span class="st">"Associate's degree or college diploma"</span>, <span class="st">"Bachelor's degree"</span>,</span>
-<span class="r-in">    <span class="st">"Master's degree"</span>, <span class="st">"Professional or doctoral degree"</span><span class="op">)</span>,</span>
-<span class="r-in"><span class="st">"Percent"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"49%"</span>, <span class="st">"51%"</span>,</span>
-<span class="r-in">    <span class="st">""</span>, <span class="st">"12%"</span>, <span class="st">"20%"</span>, <span class="st">"19%"</span>,</span>
-<span class="r-in">    <span class="st">"22%"</span>, <span class="st">"27%"</span>,</span>
-<span class="r-in">    <span class="st">""</span>, <span class="st">"3%"</span>,</span>
-<span class="r-in">    <span class="st">"18%"</span>, <span class="st">"17%"</span>,</span>
-<span class="r-in">    <span class="st">"18%"</span>, <span class="st">"32%"</span>,</span>
-<span class="r-in">   <span class="st">"10%"</span>, <span class="st">"3%"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">demo_table_format</span><span class="op">(</span><span class="va">temp_data</span>,</span>
-<span class="r-in">char_var <span class="op">=</span> <span class="va">Trait</span>,</span>
-<span class="r-in">chars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>, <span class="st">"Income"</span>, <span class="st">"Education"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div id="gakubivmhp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">temp_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="st">"Trait"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>, <span class="st">"Woman or Other"</span>, <span class="st">"Man"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Income"</span>, <span class="st">"Less than $25,000"</span>, <span class="st">"$25,000 to $49,999"</span>, <span class="st">"$50,000 to $74,999"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"$75,000 to $99,999"</span>, <span class="st">"$100,000 or more"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Education"</span>, <span class="st">"Less than high school graduate"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"High school graduate"</span>, <span class="st">"Some college or university, no degree"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Associate's degree or college diploma"</span>, <span class="st">"Bachelor's degree"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Master's degree"</span>, <span class="st">"Professional or doctoral degree"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span><span class="st">"Percent"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"49%"</span>, <span class="st">"51%"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">""</span>, <span class="st">"12%"</span>, <span class="st">"20%"</span>, <span class="st">"19%"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"22%"</span>, <span class="st">"27%"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">""</span>, <span class="st">"3%"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"18%"</span>, <span class="st">"17%"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"18%"</span>, <span class="st">"32%"</span>,</span></span>
+<span class="r-in"><span>   <span class="st">"10%"</span>, <span class="st">"3%"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">demo_table_format</span><span class="op">(</span><span class="va">temp_data</span>,</span></span>
+<span class="r-in"><span>char_var <span class="op">=</span> <span class="va">Trait</span>,</span></span>
+<span class="r-in"><span>chars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>, <span class="st">"Income"</span>, <span class="st">"Education"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div id="xegydknkqn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;style&gt;html {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_table {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_table {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   display: table;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-collapse: collapse;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-left: auto;</span>
@@ -161,7 +194,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-left-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: center;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #FFFFFF;</span>
@@ -173,7 +206,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_title {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_title {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 125%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: initial;</span>
@@ -185,7 +218,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_subtitle {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_subtitle {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 85%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: initial;</span>
@@ -197,13 +230,13 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_bottom_border {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_bottom_border {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_col_headings {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_col_headings {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
@@ -218,7 +251,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_col_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_col_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -238,7 +271,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   overflow-x: hidden;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_column_spanner_outer {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_column_spanner_outer {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -250,15 +283,15 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 4px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_column_spanner_outer:first-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_column_spanner_outer:first-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_column_spanner_outer:last-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_column_spanner_outer:last-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_column_spanner {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_column_spanner {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #FFFFFF;</span>
@@ -270,7 +303,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   width: 100%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_group_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_group_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -295,7 +328,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: middle;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_empty_group_heading {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_empty_group_heading {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding: 0.5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
@@ -310,15 +343,15 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: middle;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_from_md &gt; :first-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_from_md &gt; :first-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-top: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_from_md &gt; :last-child {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_from_md &gt; :last-child {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-bottom: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -337,7 +370,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   overflow-x: hidden;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_stub {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_stub {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -350,7 +383,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_stub_row_group {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_stub_row_group {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
@@ -364,11 +397,11 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: top;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_row_group_first td {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_row_group_first td {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-transform: inherit;</span>
@@ -378,16 +411,16 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_first_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_first_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_first_summary_row.thick {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_first_summary_row.thick {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_last_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_last_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -397,7 +430,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_grand_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_grand_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-transform: inherit;</span>
@@ -407,7 +440,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_first_grand_summary_row {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_first_grand_summary_row {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 8px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 5px;</span>
@@ -417,11 +450,11 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_striped {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_striped {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: rgba(128, 128, 128, 0.05);</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_table_body {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_table_body {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-style: solid;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-width: 2px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-top-color: #D3D3D3;</span>
@@ -430,7 +463,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_footnotes {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_footnotes {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: none;</span>
@@ -444,7 +477,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_footnote {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_footnote {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin: 0px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 90%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-left: 4px;</span>
@@ -453,7 +486,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_sourcenotes {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_sourcenotes {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   color: #333333;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background-color: #FFFFFF;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-bottom-style: none;</span>
@@ -467,7 +500,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   border-right-color: #D3D3D3;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_sourcenote {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_sourcenote {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 90%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-top: 4px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-bottom: 4px;</span>
@@ -475,36 +508,36 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   padding-right: 5px;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_left {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_left {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: left;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_center {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_center {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: center;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_right {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_right {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: right;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-variant-numeric: tabular-nums;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_font_normal {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_font_normal {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: normal;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_font_bold {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_font_bold {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: bold;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_font_italic {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_font_italic {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-style: italic;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_super {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_super {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 65%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_two_val_uncert {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_two_val_uncert {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   display: inline-block;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 1em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   text-align: right;</span>
@@ -513,31 +546,31 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 <span class="r-out co"><span class="r-pr">#&gt;</span>   margin-left: 0.1em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_footnote_marks {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_footnote_marks {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-style: italic;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-weight: normal;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 75%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.4em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_asterisk {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_asterisk {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 100%;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_slash_mark {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_slash_mark {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.7em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.7em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.15em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_fraction_numerator {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_fraction_numerator {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: 0.45em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> #gakubivmhp .gt_fraction_denominator {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #xegydknkqn .gt_fraction_denominator {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   font-size: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   line-height: 0.6em;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vertical-align: -0.05em;</span>
@@ -633,7 +666,7 @@ A solution to this is to insert `\n` in your text, which will create a linebreak
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

@@ -45,26 +45,33 @@ returns the categorized values included in gender_walk.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">clean_gender</span><span class="op">(</span><span class="va">x</span>, <span class="va">var</span>, new_var <span class="op">=</span> <span class="va">gender_clean</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">clean_gender</span><span class="op">(</span><span class="va">x</span>, <span class="va">var</span>, new_var <span class="op">=</span> <span class="va">gender_clean</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>Data.frame containing gender data</p></dd>
+
+
 <dt>var</dt>
 <dd><p>Original variable containing gender data. Must be specified</p></dd>
+
+
 <dt>new_var</dt>
 <dd><p>Name of new gender variable. Defaults to gender_clean</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A data.frame</p>
+    
+
+<p>A data.frame</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">test_data</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">clean_gender</span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">gender</span>, <span class="va">gender_clean</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">test_data</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">clean_gender</span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">gender</span>, <span class="va">gender_clean</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following values are not in the gender walk dictionary and have been assigned a value of NA in the newly created variable:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 1</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 2</span>
@@ -78,7 +85,7 @@ returns the categorized values included in gender_walk.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>      2 <span style="color: #BB0000;">NA</span>          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>      2 <span style="color: #BB0000;">NA</span>          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>      1 <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -90,7 +97,7 @@ returns the categorized values included in gender_walk.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>
