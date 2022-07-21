@@ -4,7 +4,7 @@
 \alias{fauna_colors}
 \title{Return color(s) from the Faunalytics palette}
 \usage{
-fauna_colors(..., nameless = FALSE)
+fauna_colors(..., nameless = FALSE, cbf = FALSE)
 }
 \arguments{
 \item{...}{One of the following: color name(s) in quotes, a number of desired colors (no more than 6), or nothing.
@@ -12,6 +12,9 @@ Quoted colors must be a part of the Faunalytics color palette.
 If no value is provided, this function will return the base color palette with names.}
 
 \item{nameless}{Return values without names when needed. FALSE by default.}
+
+\item{cbf}{The current Faunalytics color palette is not colorblind-friendly. Setting this argument to TRUE will override
+the default Faunalytics palette and replace it with a colorblind-friendly palette (viridis::turbo). FALSE by default.}
 }
 \value{
 A named color hex code or named vector of color hex codes

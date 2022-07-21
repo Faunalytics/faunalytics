@@ -26,5 +26,6 @@ Imports:
 	zoo,
 	data.table,
 	usethis,
-	webshot
+	webshot,
+	viridis
 URL: https://faunalytics.github.io/faunalytics/

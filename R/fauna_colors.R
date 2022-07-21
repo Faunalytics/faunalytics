@@ -7,14 +7,17 @@
 #' Quoted colors must be a part of the Faunalytics color palette.
 #' If no value is provided, this function will return the base color palette with names.
 #' @param nameless Return values without names when needed. FALSE by default.
+#' @param cbf The current Faunalytics color palette is not colorblind-friendly. Setting this argument to TRUE will override
+#' the default Faunalytics palette and replace it with a colorblind-friendly palette (viridis::turbo). FALSE by default.
 #' @return A named color hex code or named vector of color hex codes
+#' @import viridis
 #' @export
 #'
 #' @examples fauna_colors("green")
 #' fauna_colors("orange", "lightblue")
 #' fauna_colors(4)
 
-fauna_colors <- function(..., nameless = FALSE){
+fauna_colors <- function(..., nameless = FALSE, cbf = FALSE){
 
   # Define main Faunalytics colors
   main_col_vec <- c(
@@ -73,6 +76,10 @@ fauna_colors <- function(..., nameless = FALSE){
 
     if(nameless){
       col_res <- unname(col_res)
+    }
+
+    if(cbf){
+      col_res <- viridis::turbo(length(col_res))
     }
 
     return(col_res)
