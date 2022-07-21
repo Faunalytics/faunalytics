@@ -48,7 +48,7 @@ when requested: black, white, gray, light gray, dark gray. Variations of grays s
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">fauna_colors</span><span class="op">(</span><span class="va">...</span>, nameless <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">fauna_colors</span><span class="op">(</span><span class="va">...</span>, nameless <span class="op">=</span> <span class="cn">FALSE</span>, cbf <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -61,6 +61,11 @@ If no value is provided, this function will return the base color palette with n
 
 <dt>nameless</dt>
 <dd><p>Return values without names when needed. FALSE by default.</p></dd>
+
+
+<dt>cbf</dt>
+<dd><p>The current Faunalytics color palette is not colorblind-friendly. Setting this argument to TRUE will override
+the default Faunalytics palette and replace it with a colorblind-friendly palette (viridis::turbo). FALSE by default.</p></dd>
 
 </dl></div>
     <div class="section level2">
