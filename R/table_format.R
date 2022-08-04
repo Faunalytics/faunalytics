@@ -104,7 +104,7 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
   if(star){
     data <- data %>%
       mutate( {{ star_dest }} := case_when(
-        {{ star_source }} < {{ star_alpha }} ~ paste0( as.character( {{ star_dest }} ), "*"),
+        {{ star_source }} < {{ star_alpha }} ~ "*",
         TRUE ~ as.character( {{ star_dest }} )
       )
       )
