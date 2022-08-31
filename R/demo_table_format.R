@@ -95,22 +95,23 @@ demo_table_format <- function(data, char_var = Characteristic,
       TRUE ~ 0
     ))
 
-data <- data %>% mutate(groupr = case_when(
-   cat_indicator == 1 ~ as.character({{char_var}}),
-   TRUE ~ as.character(NA)
- ),
- traitr = case_when(
-   cat_indicator == 0 ~ as.character({{char_var}}),
-   TRUE ~ "category_name"
- )) %>%
-   mutate(groupr = na.locf(groupr),
-          groupr = factor(groupr, levels = chars),
-          traitr = factor(traitr, levels = unique(append("category_name", traitr)))
-          )
+  data <- data %>% mutate(groupr = case_when(
+    cat_indicator == 1 ~ as.character({{char_var}}),
+    TRUE ~ as.character(NA)
+  ),
+  traitr = case_when(
+    cat_indicator == 0 ~ as.character({{char_var}}),
+    TRUE ~ "category_name"
+  )) %>%
+    mutate(groupr = na.locf(groupr),
+           groupr = factor(groupr, levels = chars),
+           traitr_order = 1:n() #,
+           # traitr = factor(traitr, levels = unique(append("category_name", traitr)))
+    )
 
- data <- data %>%
-   arrange(groupr, traitr) %>%
-   select(-groupr, -traitr)
+    data <- data %>%
+    arrange(groupr, traitr_order) %>%
+    select(-groupr, -traitr_order, -traitr)
 
  if(char_header_blank){
    data <- data %>% rename(" " = {{char_var}})
