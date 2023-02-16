@@ -17,7 +17,7 @@ clean_gender(x, var, new_var = gender_clean)
 A data.frame
 }
 \description{
-This function takes a column of gender values and, in a new column,
+Deprecated - please use bucket_gender instead. This function takes a column of gender values and, in a new column,
 returns the categorized values included in gender_walk.
 }
 \examples{

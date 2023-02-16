@@ -7,7 +7,8 @@
 #' @format A data frame with 20 rows and 2 variables:
 #' \describe{
 #'   \item{original}{open-ended response}
-#'   \item{clean}{Faunalytics category}
+#'   \item{bucket}{Faunalytics category}
+#'   \item{clean}{Faunalytics category; Same as bucket, but preserved to allow deprecated clean_gender to work}
 #' }
 #'
 

@@ -1,20 +1,20 @@
 #' Create recoded gender column
 #'
-#' Deprecated - please use bucket_gender instead. This function takes a column of gender values and, in a new column,
+#' This function takes a column of gender values and, in a new column,
 #' returns the categorized values included in gender_walk.
 #' @param x Data.frame containing gender data
 #' @param var Original variable containing gender data. Must be specified
-#' @param new_var Name of new gender variable. Defaults to gender_clean
+#' @param new_var Name of new gender variable. Defaults to gender_bucket
 #' @return A data.frame
 #' @export
 #'
-#' @examples head(test_data) %>% clean_gender(gender) %>% select(gender, gender_clean)
+#' @examples head(test_data) %>% bucket_gender(gender) %>% select(gender, gender_bucket)
 #'
-clean_gender <- function(x, var, new_var = gender_clean){
+bucket_gender <- function(x, var, new_var = gender_bucket){
   res <- x |>
     rowwise() |>
     mutate(
-      {{new_var}} := gender_walk$clean[match( toupper({{ var }}), toupper(gender_walk$original))]
+      {{new_var}} := gender_walk$bucket[match( toupper({{ var }}), toupper(gender_walk$original))]
     ) |>
     ungroup()
 
@@ -36,6 +36,6 @@ clean_gender <- function(x, var, new_var = gender_clean){
   if(na_count > 0){
     warning(paste0("Note: Original gender variable contained ", na_count, " NA value(s)\n\n"))
   }
-  warning("clean_gender is deprecated. Please use bucket_gender instead.")
+
   return(res)
 }
