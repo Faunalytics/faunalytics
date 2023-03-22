@@ -75,7 +75,9 @@ fauna_colors <- function(..., nameless = TRUE, cbf = FALSE){
     }
 
     if(nameless){
+      if("force_return_full" %in% cols){
       col_res <- unname(col_res)
+      }
     }
 
     if(cbf){
