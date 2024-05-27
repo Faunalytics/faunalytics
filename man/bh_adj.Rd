@@ -4,7 +4,7 @@
 \alias{bh_adj}
 \title{Apply Benjamini-Hochberg adjustment to model summary object}
 \usage{
-bh_adj(x, fdr = 0.05, p_name = "Pr(>|t|)")
+bh_adj(x, fdr = 0.05, p_name = "Pr(>|t|)", coef_vec = NULL)
 }
 \arguments{
 \item{x}{Model summary object. For example, summary(model).}
@@ -13,6 +13,10 @@ bh_adj(x, fdr = 0.05, p_name = "Pr(>|t|)")
 
 \item{p_name}{Name of p-value column in the summary object. "Pr(>|t|)" by
 default.}
+
+\item{coef_vec}{Optional. A vector of coefficient names as strings.
+p-values associated with the coefficients in this vector will be included in 
+the adjustment and all other coefficients will be excluded.}
 }
 \value{
 A tibble

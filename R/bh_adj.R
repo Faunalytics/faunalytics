@@ -9,6 +9,9 @@
 #' @param fdr False discovery rate. 0.05 by default.
 #' @param p_name Name of p-value column in the summary object. "Pr(>|t|)" by
 #' default.
+#' @param coef_vec Optional. A vector of coefficient names as strings.
+#' p-values associated with the coefficients in this vector will be included in 
+#' the adjustment and all other coefficients will be excluded.
 #' @return A tibble
 #' @export
 #'
@@ -19,8 +22,11 @@
 
 bh_adj <- function(x, # summary object (e.g., summary(model))
                    fdr = 0.05, # false discovery rate
-                   p_name = "Pr(>|t|)"
-                   ){ # Drop intercept row
+                   p_name = "Pr(>|t|)", # p-value column name
+                   # optional vector of coefficient names to adjust
+                   coef_vec = NULL ){ 
+  
+  
   
   foo <- x[['coefficients']] |> # Take coefficients object from summary object
     unclass() |> # Unclass to allow for conversion to data.frame
@@ -28,8 +34,20 @@ bh_adj <- function(x, # summary object (e.g., summary(model))
     rownames_to_column("coef") |> # Keep rownames (coefficient names)
     as_tibble()
   
+  # Check for incorrect p_name specification. Warn if incorrect. If
+  # Pr(>|z|) should have been used, make suggestion.
+  if(!(p_name %in% names(foo))){
+    warning(paste0(p_name, " does not exist.", 
+                   ifelse("Pr(>|z|)" %in% names(foo), 
+                          " Try setting p_name to 'Pr(>|z|)'", ""))
+    )}
+
   foo_int <- foo |> filter(coef == "(Intercept)") # preserve intercept row
   foo <- foo |> filter(coef != "(Intercept)") # remove intercept row
+  
+  if(!is.null(coef_vec)){
+    foo <- foo |> filter(coef %in% coef_vec)
+  }
   
   ## Reference: https://real-statistics.com/hypothesis-testing/familywise-error/benjamini-hochberg-and-benjamini-yekutieli-tests/
   
@@ -40,13 +58,19 @@ bh_adj <- function(x, # summary object (e.g., summary(model))
     clean_names() |> # Standardize column naming for ease of reference
     arrange(p) |> # Arrange p-values in ascending order
     mutate(rank = 1:n(), # Set ranks
-           adj_a = (rank / k) * fdr, # Calculate adjusted alpha
-           bh_sig = p < adj_a) # Test for significance 
+           adj_a = (rank / k) * fdr)  # Calculate adjusted alpha
+  
+  # Add Benjamini-Hochberg adjusted p-values
+  foo$p_bh <- p.adjust(foo$p, method = "BH", n = nrow(foo))
+  
+  foo <- foo |> 
+    mutate(bh_sig = p < adj_a) # Test for significance 
   
   # Add/rename intercept row's columns for binding
   foo_int <- foo_int |> 
     mutate(rank = 0, # set rank to 0 for easier sorting
            adj_a = as.numeric(NA),
+           p_bh = as.numeric(NA),
            bh_sig = as.logical(NA)) |> 
     set_names(names(foo))
   
