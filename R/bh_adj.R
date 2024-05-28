@@ -20,7 +20,7 @@
 #' @export
 #'
 #' @examples m1 <- lm(mpg ~ cyl + hp + wt, data = mtcars)
-#' bh_adj(sum_m1)
+#' bh_adj(m1)
 
 bh_adj <- function(x, # model object (e.g., lm(mpg ~ cyl, data = mtcars))
                    fdr = 0.05, # false discovery rate

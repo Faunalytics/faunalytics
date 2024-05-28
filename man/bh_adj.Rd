@@ -34,5 +34,5 @@ Benjamini-Hochberg adjustment applied (`sig_bh`).
 }
 \examples{
 m1 <- lm(mpg ~ cyl + hp + wt, data = mtcars)
-bh_adj(sum_m1)
+bh_adj(m1)
 }
