@@ -3,8 +3,9 @@
 #' This function takes a model summary object (e.g., summary(model)) and
 #' returns a tibble with the Benjamini-Hochberg adjustment for false discovery
 #' rate applied. New columns include p-value rank (`rank`), adjusted alpha
-#' (`adj_a`), and a logical indicator of significance with the 
-#' Benjamini-Hochberg adjustment applied (`bh_sig`).
+#' (`adj_a`), adjusted p-values (`p_bh`), star indicators for significance level
+#' (`stars_bh`), and a logical indicator of significance with the 
+#' Benjamini-Hochberg adjustment applied (`sig_bh`).
 #' @param x Model summary object. For example, summary(model). 
 #' @param fdr False discovery rate. 0.05 by default.
 #' @param p_name Name of p-value column in the summary object. "Pr(>|t|)" by
@@ -70,7 +71,7 @@ bh_adj <- function(x, # summary object (e.g., summary(model))
       p_bh > 0.010 & p_bh <= 0.05 ~ "*",
       p_bh > 0.050 & p_bh <= 0.10 ~ ".",
       TRUE ~ ""),
-           bh_sig = p < adj_a) # Test for significance 
+           sig_bh = p < adj_a) # Test for significance 
   
   # Add/rename intercept row's columns for binding
   foo_int <- foo_int |> 
@@ -78,7 +79,7 @@ bh_adj <- function(x, # summary object (e.g., summary(model))
            adj_a = as.numeric(NA),
            p_bh = as.numeric(NA),
            stars_bh = as.character(NA),
-           bh_sig = as.logical(NA)) |> 
+           sig_bh = as.logical(NA)) |> 
     set_names(names(foo))
   
   foo <- foo |> 

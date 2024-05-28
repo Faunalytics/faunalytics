@@ -25,8 +25,9 @@ A tibble
 This function takes a model summary object (e.g., summary(model)) and
 returns a tibble with the Benjamini-Hochberg adjustment for false discovery
 rate applied. New columns include p-value rank (`rank`), adjusted alpha
-(`adj_a`), and a logical indicator of significance with the 
-Benjamini-Hochberg adjustment applied (`bh_sig`).
+(`adj_a`), adjusted p-values (`p_bh`), star indicators for significance level
+(`stars_bh`), and a logical indicator of significance with the 
+Benjamini-Hochberg adjustment applied (`sig_bh`).
 }
 \examples{
 m1 <- lm(mpg ~ cyl + hp + wt, data = mtcars)
