@@ -64,13 +64,20 @@ bh_adj <- function(x, # summary object (e.g., summary(model))
   foo$p_bh <- p.adjust(foo$p, method = "BH", n = nrow(foo))
   
   foo <- foo |> 
-    mutate(bh_sig = p < adj_a) # Test for significance 
+    mutate(stars_bh = case_when(
+      p_bh <= 0.001 ~ "***",
+      p_bh > 0.001 & p_bh <= 0.01 ~ "**",
+      p_bh > 0.010 & p_bh <= 0.05 ~ "*",
+      p_bh > 0.050 & p_bh <= 0.10 ~ ".",
+      TRUE ~ ""),
+           bh_sig = p < adj_a) # Test for significance 
   
   # Add/rename intercept row's columns for binding
   foo_int <- foo_int |> 
     mutate(rank = 0, # set rank to 0 for easier sorting
            adj_a = as.numeric(NA),
            p_bh = as.numeric(NA),
+           stars_bh = as.character(NA),
            bh_sig = as.logical(NA)) |> 
     set_names(names(foo))
   
