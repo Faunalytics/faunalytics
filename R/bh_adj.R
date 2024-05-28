@@ -1,51 +1,75 @@
 #' Apply Benjamini-Hochberg adjustment to model summary object
 #'
-#' This function takes a model summary object (e.g., summary(model)) and
-#' returns a tibble with the Benjamini-Hochberg adjustment for false discovery
+#' This function takes a lm or glm model object and returns a tibble with 
+#' the Benjamini-Hochberg adjustment for false discovery
 #' rate applied. New columns include p-value rank (`rank`), adjusted alpha
 #' (`adj_a`), adjusted p-values (`p_bh`), star indicators for significance level
 #' (`stars_bh`), and a logical indicator of significance with the 
 #' Benjamini-Hochberg adjustment applied (`sig_bh`).
 #' @param x Model summary object. For example, summary(model). 
 #' @param fdr False discovery rate. 0.05 by default.
-#' @param p_name Name of p-value column in the summary object. "Pr(>|t|)" by
-#' default.
 #' @param coef_vec Optional. A vector of coefficient names as strings.
 #' p-values associated with the coefficients in this vector will be included in 
 #' the adjustment and all other coefficients will be excluded.
+#' @param p_name Optional. The name of the p-value column in the summary
+#' object that results from running summary(x), where x is your model. By
+#' default, the function will look for "Pr(>|t|)" and "Pr(>|z|)". If neither
+#' of these is found and the correct `p_name` is not specified, an error will
+#' result.
 #' @return A tibble
 #' @export
 #'
 #' @examples m1 <- lm(mpg ~ cyl + hp + wt, data = mtcars)
-#' sum_m1 <- summary(m1)
 #' bh_adj(sum_m1)
-#'
 
-bh_adj <- function(x, # summary object (e.g., summary(model))
+bh_adj <- function(x, # model object (e.g., lm(mpg ~ cyl, data = mtcars))
                    fdr = 0.05, # false discovery rate
-                   p_name = "Pr(>|t|)", # p-value column name
                    # optional vector of coefficient names to adjust
-                   coef_vec = NULL ){ 
+                   coef_vec = NULL,
+                   # optional string of p-values column name in summary object
+                   # (i.e., summary(x))
+                   p_name = NULL){ 
   
+  # Detect x class and throw warning if it's a summary object.
+  if(any(grepl("summary", class(x)))){
+    warning("x must be a model object, not a model summary object.")
+  }
   
-  
-  foo <- x[['coefficients']] |> # Take coefficients object from summary object
-    unclass() |> # Unclass to allow for conversion to data.frame
+  foo <- summary(x)[['coefficients']] |> # Take coefficients matrix from summary
     as.data.frame() |> # Convert to data.frame
     rownames_to_column("coef") |> # Keep rownames (coefficient names)
-    as_tibble()
+    as_tibble() # Convert to tibble
   
-  # Check for incorrect p_name specification. Warn if incorrect. If
-  # Pr(>|z|) should have been used, make suggestion.
-  if(!(p_name %in% names(foo))){
-    warning(paste0(p_name, " does not exist.", 
-                   ifelse("Pr(>|z|)" %in% names(foo), 
-                          " Try setting p_name to 'Pr(>|z|)'", ""))
-    )}
+  # Check for either "Pr(>|z|)" or "Pr(>|t|)" format p-values.
+  # Store as p_foo_name
+  
+  if(is.null(p_name)){
+    p_foo_name <- ifelse(any(grepl("Pr(>|z|)", names(foo), fixed = T)),
+                  "Pr(>|z|)",
+                  ifelse(any(grepl("Pr(>|t|)", names(foo), fixed = T)),
+                         "Pr(>|t|)",
+                         as.numeric(NA)))
+    
+  } else{ # Otherwise, use provided name
+    p_foo_name <- p_name
+  }
+  
+  # Warning message for incorrect p_name
+  if(is.na(p_foo_name) | !(p_foo_name %in% names(foo))){
+    warning("Incorrect p_name specification. Run the summary function on your
+            model to find the proper p_name to use. See ?faunalytics::bh_adjust
+            for more info.")
+  }
+  
+  # Rename p-values column to "p"
+  foo <- foo |> 
+    rename(p = as.name(p_foo_name))
+                       
 
   foo_int <- foo |> filter(coef == "(Intercept)") # preserve intercept row
   foo <- foo |> filter(coef != "(Intercept)") # remove intercept row
   
+  # If specified, keep only rows for coefficients in coef_vec
   if(!is.null(coef_vec)){
     foo <- foo |> filter(coef %in% coef_vec)
   }
@@ -55,7 +79,6 @@ bh_adj <- function(x, # summary object (e.g., summary(model))
   k <- nrow(foo) # Get k (number of p-values)
   
   foo <- foo |> 
-    rename(p = as.name(p_name)) |> # Rename for ease, evaluating p_name as var
     clean_names() |> # Standardize column naming for ease of reference
     arrange(p) |> # Arrange p-values in ascending order
     mutate(rank = 1:n(), # Set ranks

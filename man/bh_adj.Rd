@@ -4,26 +4,29 @@
 \alias{bh_adj}
 \title{Apply Benjamini-Hochberg adjustment to model summary object}
 \usage{
-bh_adj(x, fdr = 0.05, p_name = "Pr(>|t|)", coef_vec = NULL)
+bh_adj(x, fdr = 0.05, coef_vec = NULL, p_name = NULL)
 }
 \arguments{
 \item{x}{Model summary object. For example, summary(model).}
 
 \item{fdr}{False discovery rate. 0.05 by default.}
 
-\item{p_name}{Name of p-value column in the summary object. "Pr(>|t|)" by
-default.}
-
 \item{coef_vec}{Optional. A vector of coefficient names as strings.
 p-values associated with the coefficients in this vector will be included in 
 the adjustment and all other coefficients will be excluded.}
+
+\item{p_name}{Optional. The name of the p-value column in the summary
+object that results from running summary(x), where x is your model. By
+default, the function will look for "Pr(>|t|)" and "Pr(>|z|)". If neither
+of these is found and the correct `p_name` is not specified, an error will
+result.}
 }
 \value{
 A tibble
 }
 \description{
-This function takes a model summary object (e.g., summary(model)) and
-returns a tibble with the Benjamini-Hochberg adjustment for false discovery
+This function takes a lm or glm model object and returns a tibble with 
+the Benjamini-Hochberg adjustment for false discovery
 rate applied. New columns include p-value rank (`rank`), adjusted alpha
 (`adj_a`), adjusted p-values (`p_bh`), star indicators for significance level
 (`stars_bh`), and a logical indicator of significance with the 
@@ -31,7 +34,5 @@ Benjamini-Hochberg adjustment applied (`sig_bh`).
 }
 \examples{
 m1 <- lm(mpg ~ cyl + hp + wt, data = mtcars)
-sum_m1 <- summary(m1)
 bh_adj(sum_m1)
-
 }
