@@ -135,6 +135,10 @@ Include ".png" at the end of your file path. Requires phantomjs. If you have nev
 \item{shade_colour}{See shade_color}
 
 \item{...}{Other arguments}
+
+\item{shade_fill}{Color of alternate row shading. Light gray by default. Formerly called shade_color or shade_colour.}
+
+\item{gotham}{Set to FALSE if you do not have the fonts Gotham Book and Gotham Bold installed and accessible to R. If FALSE, defaults to Helvetica.}
 }
 \value{
 An HTML table or raw HTML

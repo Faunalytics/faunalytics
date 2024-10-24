@@ -9,11 +9,11 @@
 #' @param cell_fill Color of table body cells. White by default
 #' @param text_color Color of table body text. Dark gray by default
 #' @param border_color Color of cell borders. White by default
-#' @param shade Shade alternate rows. TRUE by default. Begins with the second row.
-#' @param shade_color Color of alternate row shading. Light blue by default.
-#' Currently, the only other option is "lightgray", which will also make text in those dark.
+#' @param shade Shade alternate rows. By default, only shows when there are 4 or more rows. This can be replaced with
+#' TRUE to apply regardless of the number of rows, or FALSE to prevent any row shading. 
+#' @param shade_fill Color of alternate row shading. Light gray by default. Formerly called shade_color or shade_colour.
 #' @param shade_text Color of text in shaded (or alternate if shaded = FALSE) rows.
-#' Light and dark default colors are "white" and "darkgray".
+#' Dark gray by default. 
 #' @param na.rm Remove NA values from character columns and replace with blanks. TRUE by default.
 #' If FALSE, NA will show up in any cells where it appears in the data you feed into this function.
 #' @param star If TRUE, will add an asterisk to star_dest values where star_source is less than star_alpha (0.05  by default). Requires star_source and star_dest to be specified. FALSE by default.
@@ -45,7 +45,7 @@
 #' @param header_colour See header_color
 #' @param text_colour See text_color
 #' @param border_colour See border_color
-#' @param shade_colour See shade_color
+#' @param gotham Set to FALSE if you do not have the fonts Gotham Book and Gotham Bold installed and accessible to R. If FALSE, defaults to Helvetica.
 #' @param ... Other arguments
 #'
 #'
@@ -62,11 +62,11 @@
 #'     everything() ~ pct(.15)
 #'   )
 #' )
-table_format <- function(data, header_fill = "blue", header_color = "white",
+table_format <- function(data, header_fill = "darkblue", header_color = "white",
                          cell_fill = "white", text_color = "darkgray",
-                         border_color = "white", shade = TRUE,
-                         shade_color = "lightblue", shade_text = NULL,
-                         na.rm = TRUE,
+                         border_color = "white", shade = nrow(data) > 3,
+                         shade_fill = "lightgrey", shade_text = NULL,
+                         na.rm = TRUE, font_body = "Gotham Book", font_bold = "Gotham Bold",
                          star = FALSE, star_source = NULL, star_dest = NULL,
                          star_alpha = 0.05, h_aligns = NULL,
                          col_widths = NULL, caption = NULL,
@@ -75,6 +75,7 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
                          image_path = NULL,
                          header_colour = NULL, text_colour = NULL,
                          border_colour = NULL, shade_colour = NULL,
+                         gotham = TRUE,
                          ...){
 
   if(!is.null(header_colour)){
@@ -86,8 +87,10 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
   if(!is.null(border_colour)){
     border_color <- border_colour
   }
-  if(!is.null(shade_colour)){
-    shade_color <- shade_colour
+  
+  if(gotham == FALSE){
+    font_body <- "Helvetica"
+    font_bold <- "Helvetica-Bold"
   }
 
   # Set NA values to ""
@@ -140,20 +143,20 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
     fauna_colors(border_color)} else { border_color } # If color matches a fauna_color, use that
 
   # Shading color
-  shade_color <- gsub(" ", "", tolower(shade_color)) # Standardize
+  shade_fill <- gsub(" ", "", tolower(shade_fill)) # Standardize
 
-  alt_row_col <- if(shade_color == "lightgray"){
+  alt_row_col <- if(shade_fill == "lightgray"){
     fauna_colors("lightgray")
-  } else if(shade_color == "lightblue"){
+  } else if(shade_fill == "lightblue"){
     fauna_colors("lightblue")
-  } else if(shade_color %in% names(return_full_palette())){
-    fauna_colors(shade_color)
+  } else if(shade_fill %in% names(return_full_palette())){
+    fauna_colors(shade_fill)
   } else {
-    shade_color
+    shade_fill
   }
 
-  if(!(shade_color %in% names(return_full_palette()))){
-    warning(paste0("shade_colo(u)r '", shade_color, "' is not in the Faunalytics color palette."))
+  if(!(shade_fill %in% names(return_full_palette()))){
+    warning(paste0("shade_fill '", shade_fill, "' is not in the Faunalytics color palette."))
   }
 
 
@@ -163,7 +166,7 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
     tab_style(
       style = list(
         cell_fill(color = cell_fill),
-        cell_text(color = text_color)
+        cell_text(color = text_color, font = font_body)
       ),
       locations = cells_body()
     ) %>%
@@ -171,7 +174,7 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
     tab_style(
       style = list(
         cell_fill(color = header_fill),
-        cell_text(color = header_color, weight = "bold")
+        cell_text(color = header_color, font = font_bold)
       ),
       locations = list(
         cells_column_labels()
@@ -190,7 +193,7 @@ table_format <- function(data, header_fill = "blue", header_color = "white",
       column_labels.border.bottom.color = unname(border_color))
 
   if(nrow(data) > 1){
-  if(shade & shade_color == "lightblue"){
+  if(shade & shade_fill == "lightblue"){
     foo <- foo %>% tab_style(
       style = list(
         cell_fill(color = alt_row_col),
