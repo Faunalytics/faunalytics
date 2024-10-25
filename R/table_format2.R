@@ -62,7 +62,7 @@
 #'     everything() ~ pct(.15)
 #'   )
 #' )
-table_format <- function(data, header_fill = "blue", header_color = "white",
+unused_tblr <- function(data, header_fill = "blue", header_color = "white",
                          cell_fill = "white", text_color = "darkgray",
                          border_color = "white", shade = TRUE,
                          shade_color = "lightblue", shade_text = NULL,
