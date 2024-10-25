@@ -22,7 +22,7 @@ fauna_blues <- function(x){
   } else if(!(x %% 1 == 0)){
     warning("fauna_blues requires an integer. For example, 1, 2, or 3, but not 1.5.")
   } else if(x == 1){
-    blu <- fauna_colors("blue")
+    blu <- fauna_colors("darkblue")
   }else if(x == 2){
     blu <- fauna_colors(c("darkblue", "lightblue"))
   } else if(x == 3){
