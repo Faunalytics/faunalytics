@@ -46,7 +46,8 @@ theme_faunalytics <- function(show_axis_title = TRUE, show_x_axis_title = TRUE, 
       strip.background = element_rect(fill = fauna_colors("darkblue")),
       
       # legend elements
-      ## legend.title = element_blank(),
+      legend.title = element_text(size = 10, family = font_bold,
+                                  color = fauna_colors("darkgrey")),
       legend.text = element_text(size = 10, family = font_bold,
                                  color = fauna_colors("darkgrey")),
       legend.position = "bottom"
