@@ -51,7 +51,8 @@
 #'
 #' @return An HTML table or raw HTML
 #' @export
-#' @import gt dplyr webshot stringr
+#' @import dplyr webshot stringr
+#' @importFrom gt tab_style tab_options cols_align cols_width tab_source_note fmt_markdown
 #' @examples table_format(head(mtcars))
 #' table_format(head(cars)) %>% return_html()
 #'

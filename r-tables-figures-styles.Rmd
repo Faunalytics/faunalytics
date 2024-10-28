@@ -1,0 +1,531 @@
+---
+title: "Faunalytics R Tables and Figures Style Guide"
+output: html_document
+date: "2024-10-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(janitor)
+library(faunalytics)
+```
+
+# Overview
+
+As communicators of scientific information, it is important that our work is 
+clear and consistent. This is true for both our writing and our visuals. To that
+end, there are certain styles and standards we should use to make sure that we
+have a consistent aesthetic across reports.
+
+***An important note:*** You should default to the styles and standards outlined in this
+document. However, there may be cases when it makes more sense to deviate from 
+these guidelines for the sake of clarity and/or readability.
+
+The `faunalytics` package comes with several functions designed to make it 
+easy to follow these standards. These include `theme_faunalytics` for `ggplot`
+objects and `table_format` for `gt` tables, both of which are discussed below.
+Other helpful functions include `fauna_colors` and `fauna_blues`, also discussed
+below. 
+
+## Colors
+
+The standard Faunalytics color palette includes green, amber, red, and blue,
+which can be broken down into dark blue, light blue, and regular blue. Rather 
+than the standard shades of these colors (e.g., #FF0000 for red), we use
+specific brand shades (e.g., #E64B3D for red). The specific shades we use can
+be accessed using the `fauna_colors` function.
+
+```{r colors}
+# return hex code for red
+fauna_colors("red")
+# return all hex codes in standard palette
+fauna_colors()
+# return all hex codes in standard palette with names for clarity
+fauna_colors(nameless = FALSE)
+```
+```{r color-plot, echo=FALSE}
+scales::show_col(fauna_colors())
+```
+
+Unfortunately, some of these colors don't work well together (e.g., green and
+red aren't colorblind-friendly). Green is also often associated with "good" and
+red with "bad." To avoid issues and limitations such as these, graphics should
+generally default to shades of blue. 
+
+When using only one color, use dark blue (#254C59) . When using two colors, use 
+dark blue and light blue (#5FB7E5). When using three colors, use dark blue, 
+regular blue (#0092B2), and light blue. If appropriate, use additional shades
+of blue when using more than three colors. You can access all of these shades
+of blue by providing the number of shades you need to the `fauna_blues` 
+function. When the number you provide is greater than three, the function
+interpolates shades between dark blue and light blue.
+
+```{r blues}
+fauna_blues(1) # dark blue only
+fauna_blues(2) # dark blue and light blue
+fauna_blues(3) # dark blue, regular blue, and light blue
+fauna_blues(6) # dark blue, four interpolated shades, and light blue 
+```
+
+# ggplot
+
+We typically use the `ggplot2` package for graphs. At the end of your ggplot
+chunk, you can add `+ theme_faunalytics()` to standardize many aspects of your
+plot's theme. For example, notice the difference between these two plots below.
+
+We'll summarize the mtcars data for the examples below.
+
+```{r mtcars-factor, echo = FALSE}
+mtcars2 <- mtcars |> 
+  group_by(cyl) |> 
+  summarize(mpg = mean(mpg)) |> 
+  ungroup() |> 
+  mutate(cyl = factor(cyl, levels = c(4, 6, 8)))
+```
+
+```{r theme_faunalytics-example}
+ggplot(mtcars2, aes(x = cyl, y = mpg)) +
+  geom_col() # without the Faunalytics theme
+
+ggplot(mtcars2, aes(x = cyl, y = mpg)) +
+  geom_col() +
+  theme_faunalytics() # with the Faunalytics theme
+```
+
+***Note:*** In `ggplot`, if you're referring to a variable in your dataset,
+it should be referenced within the `aes()` command, like `aes(x = cyl, y = mpg)`.
+However, if you're referencing something that's *not* in your data, it should
+be referenced outside of the `aes()` command, like `fill = fauna_colors("darkblue")`.
+
+Where white would be used, we just stick with the standard white (#FFFFFF). You
+can also access this by using `fauna_colors("white")`. However, rather than
+black, we use a slightly softer dark gray (#333333), accessed using
+`fauna_colors("darkgray")`.
+
+You may notice that the graph is not entirely in the Faunalytics colors scheme. 
+Unfortunately, this can't be automatically applied using `theme_faunalytics` and
+requires specification. For example:
+```{r make-plot-blue1}
+ggplot(mtcars2, aes(x = cyl, y = mpg)) +
+  geom_col(fill = fauna_blues(1)) + # make all columns the same color
+  theme_faunalytics()
+```
+
+or
+```{r make-plot-blue2}
+ggplot(mtcars2, aes(x = cyl, y = mpg)) +
+  geom_col(aes(fill = cyl)) + # change color based on cyl value
+  scale_fill_manual(values = fauna_blues(3)) +
+  theme_faunalytics()
+```
+
+*Note:* In ggplot terms, `fill` is the term for bars and other things that are
+*filled in* with a color. `color` refers to lines, points, and borders. 
+
+## Maximizing the data-ink ratio
+
+In general, we want to try to adhere to statistician and data viz legend [Edward
+Tufte's principles for graphing](https://thedoublethink.com/tuftes-principles-for-visualizing-quantitative-information/),
+which emphasize showing the data and reducing the amount of unnecessary
+components on a graphic (aka maximizing the data-ink ratio). To this end, we
+often want to remove things like axis titles, axis text, axis ticks, etc. if
+they aren't providing critical information that isn't available somewhere else. 
+Take the following graph as an example. The graph title appears before the code
+because we type this titles into reports rather than embedding them in the
+graph images. 
+
+#### Average miles per gallon by number of engine cylinders
+```{r max-plot}
+ggplot(mtcars2, aes(x = cyl, y = mpg)) +
+  geom_col(aes(fill = cyl)) +
+  scale_fill_manual(values = fauna_blues(3)) +
+  theme_faunalytics()
+```
+
+The y axis title and x axis title are made redundant by the graph title. The 
+x axis text could also be eliminated if we more clearly label the legend. Since
+we won't need the x axis text, we can also eliminated the associated ticks. We 
+can get rid of this redundant information using a `theme()` command, plus an
+additional tweak to rename the legend. 
+
+#### Average miles per gallon by number of engine cylinders
+```{r min-plot}
+ggplot(mtcars2, aes(x = cyl, y = mpg)) +
+  geom_col(aes(fill = cyl)) +
+  scale_fill_manual("Engine Cylinders", # rename legend
+                    values = fauna_blues(3)) +
+  theme_faunalytics() +
+  theme(axis.title = element_blank(), # hide axis titles
+        axis.text.x = element_blank(), # hide x axis text (i.e., 4, 6, 8)
+        axis.ticks.x = element_blank()) # hide x axis ticks
+```
+
+***Note: *** The `theme` command must go *after* the `theme_faunalytics` command.
+
+You can get rid of elements by setting them equal to element_blank() as done
+in the above example. For additional ways to change the defaults, see [this 
+ggplot2 guide](https://ggplot2.tidyverse.org/reference/theme.html). 
+
+While we're at it, we can make a few more tweaks to make the graphic better.
+
+#### Average miles per gallon by number of engine cylinders
+```{r min-plot2}
+ggplot(mtcars2, aes(x = cyl, y = mpg)) +
+  geom_col(aes(fill = cyl)) +
+  scale_fill_manual("Engine Cylinders", 
+                    values = fauna_blues(3)) +
+  scale_y_continuous(limits = c(0, 30), # set y axis limits
+                    breaks = seq(0, 30, 10)) + # set y tick locations (0 to 30 every 10 units))
+  guides(fill = guide_legend(title.position = "top")) + # put legend title above legend
+  theme_faunalytics() +
+  theme(axis.title = element_blank(), 
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank()) 
+```
+  
+## Data labels
+We can also add data labels. This may seem like it contradicts the data-ink
+ratio maximization guideline, but it doesn't really because we're using these 
+data labels to provide additional information. Rather than guessing what the
+heights of the bars are, we're providing additional information.
+
+```{r add-text-plot2}
+ggplot(mtcars2, aes(x = cyl, y = mpg)) +
+  geom_col(aes(fill = cyl)) +
+  geom_text(aes(label = sprintf("%.1f", mpg), # label with mpg, rounded to 1 decimal place
+                y = mpg + 1), # place label one unit above top of bar
+            color = fauna_colors("darkgray"), # set text to dark gray
+            family = "Gotham Bold") + # change font to Gotham Bold
+  scale_fill_manual("Engine Cylinders", 
+                    values = fauna_blues(3)) +
+  scale_y_continuous(limits = c(0, 30),
+                    breaks = seq(0, 30, 10)) + 
+  guides(fill = guide_legend(title.position = "top")) +
+  theme_faunalytics() +
+  theme(axis.title = element_blank(), 
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank()) 
+```
+
+Above, we change the font to Gotham Bold. This is our standard **bold** font.
+For non-bold fonts, we use Gotham Book. We also changed the default text color
+(black) to dark gray and moved the label up a bit so it wouldn't overlap the bar.
+These are all adjustments to how our `label` shows up. We could have simply set 
+this to `mpg`, but it would have given a lot of decimal places. Since we only 
+want one decimal place, we wrap it in the `sprintf` function. "%.1f" gives us 
+one decimal place (.1 for one decimal place, .2 for two decimal places, etc.). 
+We could have use `round(mpg, 1)` instead, but this would not have displayed a 0
+in the decimal place if any existed. 
+
+## Other things
+
+### Error bars
+We set the color of error bars to gray (#808080) so they show up clearly. You
+can do this using `fauna_colors("gray")`. We also set the default width of
+error bars to .15. 
+
+## Grouped bars, labels, and error bars
+If you want to make a grouped bar plot, you have to tell `ggplot` that by setting
+the fill to a variable. This will create a *stacked* bar plot. To make it a 
+grouped bar plot, you have to tell `ggplot` to unstack it. To do this, we add 
+the argument `position = position_dodge()` to the `geom_*` line. By default,
+the width (distance of the grouped bars) is .9. If you have labels on the bars
+or error bars, you'll also need to set those to be position dodged and you'll
+need to manually set the width to .9: `position = position_dodge(width = .9)`. 
+You can see an example of all of this below using a different summarized version
+of the `mtcars` dataset.
+
+```{r mtcars3-maker, echo = FALSE, message = FALSE}
+mtcars3 <- mtcars |> 
+  group_by(cyl, am) |> 
+  summarize(mean_mpg = mean(mpg),
+            n = n(),
+            se = sd(mpg) / sqrt(n),
+            lower_ci = mean_mpg - qt(1 - (0.05 / 2), n - 1) * se,
+            upper_ci = mean_mpg + qt(1 - (0.05 / 2), n - 1) * se
+            ) |> 
+  ungroup() |> 
+  rename(mpg = mean_mpg) |> 
+  mutate(cyl = factor(cyl, levels = c(4, 6, 8)),
+         am = case_when(
+           am == 0 ~ "Automatic",
+           am == 1 ~ "Manual"
+         ),
+         am = factor(am, levels = c("Automatic", "Manual")))
+```
+#### Average miles per gallon by number of engine cylinders and transmission type
+```{r error-bars-and-dodging}
+ggplot(mtcars3, aes(x = cyl, y = mpg, 
+                    fill = am)) + # move fill to ggplot line so it applies to everything below
+  geom_col(position = position_dodge()) + # set position_dodge for bars (columns)
+  geom_errorbar(aes(ymin = lower_ci, # set error bar minimum to pre-calculated value
+                    ymax = upper_ci), # # set error bar maximum to pre-calculated value
+                color = fauna_colors("gray"), # set error bar color to gray
+                width = .15, # set error bar width
+                position = position_dodge(width = .9)) + # specify dodged position and width
+  scale_fill_manual("Tranmission Type", 
+                    values = fauna_blues(2)) +
+  scale_y_continuous(limits = c(0, 40),
+                    breaks = seq(0, 40, 10)) +
+  labs(x = "Number of Engine Cylinders") +
+  guides(fill = guide_legend(title.position = "top")) +
+  theme_faunalytics() +
+  theme(axis.title.y = element_blank()) # hide only y axis title
+```
+
+### Axis scaling
+Axes should also be appropriately scaled. For example, if we're showing
+percentages and a 0%-100% axis, the axis shouldn't show up as 0.0 to 1.0, it 
+should show up as 0% to 100%. (Data labels should match this as well.) 
+
+The `scales` package allows us to make these changes fairly easily. Take the
+following graph as an example:
+
+#### Percentage of cars in `mtcars` data by number of cylinders
+```{r bad-scales}
+mtcars |>
+ tabyl(cyl) |> 
+  ggplot(aes(x = as.factor(cyl), y = percent)) +
+  geom_col(fill = fauna_colors("darkblue")) +
+  labs(x = "", y = "") + # Set axis titles to blank
+  theme_faunalytics()
+```
+
+We're reporting percentages, so the y axis should reflect that more clearly. We
+can set the `labels` argument of the `scale_y_continous` (because we want to 
+adjust the y axis of a continuous value, as opposed to `scale_y_discrete`) equal
+to `scales::percent` to tell ggplot to treat the y axis values as percentages.  
+(The double colon is how you access a single function from an unloaded package:
+`package::function`. If we had run `library(scales)` earlier, we could have just
+written `percent`.)
+
+#### Percentage of cars in `mtcars` data by number of cylinders
+```{r better-scales}
+mtcars |>
+ tabyl(cyl) |> 
+  ggplot(aes(x = as.factor(cyl), y = percent)) +
+  geom_col(fill = fauna_colors("darkblue")) +
+  scale_y_continuous(limits = c(0, .5), # set minimum and maximum of axis
+                     labels = scales::percent) + # show axis labels as percentages
+  labs(x = "", y = "") + 
+  theme_faunalytics()
+```
+
+Similarly, we should format scales in the thousands and larger with commas.
+Again, we can use the `scales` package with the `scale_y_continuous` function.
+
+#### Car weight by miles per gallon
+```{r comma-scales}
+mtcars |>
+ mutate(wt = wt * 1000) |> # convert wt from showing thousands of lbs to showing lbs
+  ggplot(aes(x = mpg, y = wt)) +
+  geom_point(color = fauna_colors("darkblue")) + # geom_point uses color, not fill
+  scale_y_continuous(limits = c(0, 6000), # set axis min and max
+                     labels = scales::comma) + # use commas in axis text
+  labs(x = "Miles per gallon", y = "Weight (lbs)") + 
+  theme_faunalytics()
+```
+
+The `scales` package comes with lots of ways to format axes, so it's worth
+exploring it if you have/want to tweak axis labels.
+
+
+## Saving
+You can save images with the `ggsave` function. It safest to save your
+graph as an object using the `<-` operator and then call that plot by name
+(versus the alternative of relying on `ggsave`'s default "last plot" behavior). 
+
+`ggsave` requires you to specify a filename you'd like to save your plot as. You
+can include a full file path here and save the image as a png. Width and height
+are up to you, but changing these can sometimes affect how the plot renders,
+so be sure to check your saved image to make sure it looks correct.
+
+An example of the ggsave syntax for a non-existent plot called `p_label_belief`:
+```{r, eval = FALSE}
+ggsave(filename = "output/figures/welfare-label-beliefs.png", 
+       plot = p_label_belief)
+```
+
+# Tables
+
+Tables are annoying unfortunately. We incorporate a package called `gt` to make
+consistent, save-able tables. You can apply the default formatting using the
+function `table_format` from the `faunalytics` package. This function takes
+a dataframe and makes it a `gt` table. It will automatically name the columns
+whatever they're name in your dataframe, so you may wish to rename them before
+using the `table_format` function.
+
+Before showing this, let's make some data to work with.
+```{r tbl-dat}
+mtcars_auto_tbl <- mtcars |> 
+  filter(am == 0) |> # subset data to keep only automatic transmission cars
+  rownames_to_column("car") |> # turn rownames into a column called "car'
+  mutate(make = trimws(str_extract(car, "^.*?\\s|^Valiant$"))) |> # extract car make
+  tabyl(make) # create summary table
+```
+
+```{r gt-example}
+mtcars_auto_tbl |> 
+  table_format()
+```
+
+By default, any table with four or more rows gets alternate row shading to make
+the tables easier to read. This and many other features are changeable. See
+`?table_format` for more on that. 
+
+Unfortunately, many features have to be changed using `gt`'s clunky syntax. For 
+anything not covered here, have a look at [this guide to gt](https://gt.rstudio.com/articles/gt.html).
+
+## Alignment and column width
+
+We'll need to change the names of the columns, but let's save that for last so
+that we don't have to deal with capitalization and so on. 
+
+Unlike with `ggplot`, it's tricky to reformat columns in `gt`, so we'll reformat
+our percentages and numbers before applying the `table_format` function. 
+
+We'll want to right-align all numeric columns. In this case, that's our `n` and
+`percent` columns. You can do that using `gt`'s `cols_align` function like this:
+```{r gt-nums}
+mtcars_auto_tbl |>
+  mutate(percent = paste0(round(100 * percent, 0), "%"), # reformat percentage
+         n = format(n, big.mark = ",")) |> # add comma separators
+  table_format()
+```
+
+The line adding comma separators isn't necessary because our numbers are all
+below 1,000, but I've included it because it could be helpful in other cases.
+
+We might get the proper alignment for our columns, but just in case we didn't
+or we want to be extra safe, we can specify column alignment like this:
+```{r gt-align}
+mtcars_auto_tbl |>
+  mutate(percent = paste0(round(100 * percent, 0), "%"),
+         n = format(n, big.mark = ",")) |>
+  table_format() |> 
+  cols_align(align = "right", # specify alignment direction
+             columns = c(n, percent)) # name columns in vector (using c())
+```
+
+We can specify column width as well. You can do this with either pixels (`px`)
+or with percentages (`pct`). `px` is probably the better option in most cases.
+As a note, the `cols_width` functionworks with tidyverse shortcut functions like
+`contains` or `starts_with`. 
+
+```{r gt-width}
+mtcars_auto_tbl |>
+  mutate(percent = paste0(round(100 * percent, 0), "%"),
+         n = format(n, big.mark = ",")) |>
+  table_format() |> 
+  cols_align(align = "right",
+             columns = c(n, percent)) |> 
+  cols_width(make ~ px(100), # specify width in pixels
+             n ~ px(110), # bigger than needed here so we can rename it
+             percent ~ px(110))
+```
+
+We can also format specific rows or columns. For example, let's say we wanted
+a "Total" row at the bottom of this table. We'd want to make a border line
+and to bold the text. This is where things get extra clunky. You'll need to use
+`gt`'s tab_style function. See the guide linked above or `?gt::tab_style` for 
+more info on how to use this.
+
+```{r gt-total}
+mtcars_auto_tbl |>
+  adorn_totals() |> # add totals row to tabyl object
+  mutate(percent = paste0(round(100 * percent, 0), "%"),
+         n = format(n, big.mark = ",")) |>
+  table_format() |> 
+  cols_align(align = "right",
+             columns = c(n, percent)) |> 
+  cols_width(make ~ px(100),
+             n ~ px(110),
+             percent ~ px(110)) |> 
+    tab_style( # format specific cells
+    style = list(
+      cell_text(weight = "bold"), # make text bold
+      cell_borders(sides = c("top"), # add border to top of specific cells
+                   color = fauna_colors("darkgrey"), # make border dark gray
+                   weight = px(2)) # make border 2px thick
+    ),
+    locations = cells_body(
+      rows = percent == "100%" # apply the above style to rows where the
+      # value of the percent column is equal to "100%"
+    ))
+```
+
+Now we can rename the columns to finalize the table.
+
+```{r gt-rename}
+mtcars_auto_tbl |>
+  adorn_totals() |>
+  mutate(percent = paste0(round(100 * percent, 0), "%"),
+         n = format(n, big.mark = ",")) |>
+  table_format() |> 
+  cols_align(align = "right",
+             columns = c(n, percent)) |> 
+  cols_width(make ~ px(100),
+             n ~ px(110), 
+             percent ~ px(110)) |> 
+    tab_style(
+    style = list(
+      cell_text(weight = "bold"), 
+      cell_borders(sides = c("top"), 
+                   color = fauna_colors("darkgrey"), 
+                   weight = px(2))
+    ),
+    locations = cells_body(
+      rows = percent == "100%"
+    )) |> 
+    cols_label(make = "Car Make",
+               n = "Frequency",
+               percent = "Percentage")
+
+```
+
+In case we wanted to make a linebreak between the words "Car" and "Make",
+we could replace the space with "<br/>" and wrap the whole thing in `md()`, 
+which is short for "markdown", the style of formatting. This lets `gt` know to
+evaluate "<br/>" as a line break rather than just treat it like normal text.
+
+```{r gt-break}
+mtcars_auto_tbl |>
+  adorn_totals() |>
+  mutate(percent = paste0(round(100 * percent, 0), "%"),
+         n = format(n, big.mark = ",")) |>
+  table_format() |> 
+  cols_align(align = "right",
+             columns = c(n, percent)) |> 
+  cols_width(make ~ px(100),
+             n ~ px(110), 
+             percent ~ px(110)) |> 
+    tab_style(
+    style = list(
+      cell_text(weight = "bold"), 
+      cell_borders(sides = c("top"), 
+                   color = fauna_colors("darkgrey"), 
+                   weight = px(2))
+    ),
+    locations = cells_body(
+      rows = percent == "100%"
+    )) |> 
+    cols_label(make = md("Car<br/>Make"), # add line break and markdown specification
+               n = "Frequency",
+               percent = "Percentage")
+```
+
+To save this, we'd store it as an object using `<-` and run the appropriate
+save function, just like with a `ggplot` graph. In this case, we'd use `gtsave`.
+On a non-existent object called `gt_tbl`, we'd save that like this:
+```{r gt-save, eval = FALSE}
+gtsave(gt_tbl, "output/tables/table-1-results.png") # save table as png
+```
+As noted above, this requires webshot2 to be installed. 
+
+# TO ADD:
+- Gotham installation
+- webshot installation
+- faunalytics package updates
+- why do i have to load gt?
+- continuous color ramp
