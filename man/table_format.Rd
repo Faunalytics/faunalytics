@@ -32,7 +32,6 @@ table_format(
   header_colour = NULL,
   text_colour = NULL,
   border_colour = NULL,
-  shade_colour = NULL,
   gotham = TRUE,
   ...
 )
@@ -61,6 +60,10 @@ Dark gray by default.}
 \item{na.rm}{Remove NA values from character columns and replace with blanks. TRUE by default.
 If FALSE, NA will show up in any cells where it appears in the data you feed into this function.}
 
+\item{font_body}{Name of font family to use for standard text. Gotham Book by default.}
+
+\item{font_bold}{Name of font family to use for bold text. Gotham Bold by default.}
+
 \item{star}{If TRUE, will add an asterisk to star_dest values where star_source is less than star_alpha (0.05  by default). Requires star_source and star_dest to be specified. FALSE by default.}
 
 \item{star_source}{Source column from which use of asterisk is determined. For example, if your p-values are stored in a column called "p_vals", you would set this to p_vals}
@@ -77,7 +80,7 @@ Options must be one of: "left", "center", "right"}
 
 \item{col_widths}{Widths of columns. Must take the form of a list using list(). Uses expressions for the assignment of column widths for the table columns
 in data. Two-sided formulas (e.g, <LHS> ~ <RHS>) can be used, where the left-hand side corresponds to selections
-of columns and the right-hand side evaluates to single-length character values in the form {##}px (i.e., pixel dimensions);
+of columns and the right-hand side evaluates to single-length character values;
 the px() helper function is best used for this purpose. The pct() helper function is recommended for use in col_widths, which
 will allow you to set the percentage of the table width each column should make up. The column-based select helpers starts_with(), ends_with(), contains(),
 matches(), one_of(), and everything() can be used in the LHS. Subsequent expressions that operate on the columns assigned

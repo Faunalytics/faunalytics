@@ -4,14 +4,10 @@
 #' @param font_bold Font for bold text. Gotham Bold by default.
 #' @param gotham Set to FALSE if you do not have the fonts Gotham Book and Gotham Bold installed and accessible to R. If FALSE, defaults to Helvetica.
 #' @return ggplot object
+#' @import ggplot2
 #' @export
-#' @import ggplot2 faunalytics
-#' @examples 
-#' ggplot(mtcars, aes(x = cyl, y = mpg)) + geom_col() + theme_faunalytics()
-theme_faunalytics <- function(show_axis_title = TRUE, show_x_axis_title = TRUE, show_y_axis_title = TRUE,
-                              show_axis_text = TRUE, show_x_axis_text = TRUE, show_y_axis_text = TRUE, 
-                              show_axis_ticks = TRUE, show_x_axis_ticks = TRUE, show_y_axis_ticks = TRUE, 
-                              legend_location = "bottom", font = "Gotham Book", font_bold = "Gotham Bold",
+#' 
+theme_faunalytics <- function(font = "Gotham Book", font_bold = "Gotham Bold",
                               gotham = TRUE){ 
   
   font <- "Gotham Book"   # font family (non-bold)

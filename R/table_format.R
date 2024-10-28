@@ -16,6 +16,8 @@
 #' Dark gray by default. 
 #' @param na.rm Remove NA values from character columns and replace with blanks. TRUE by default.
 #' If FALSE, NA will show up in any cells where it appears in the data you feed into this function.
+#' @param font_body Name of font family to use for standard text. Gotham Book by default.
+#' @param font_bold Name of font family to use for bold text. Gotham Bold by default.
 #' @param star If TRUE, will add an asterisk to star_dest values where star_source is less than star_alpha (0.05  by default). Requires star_source and star_dest to be specified. FALSE by default.
 #' @param star_source Source column from which use of asterisk is determined. For example, if your p-values are stored in a column called "p_vals", you would set this to p_vals
 #' @param star_dest Destination column to apply asterisk to based on star_source. This column will be converted to a character.
@@ -27,7 +29,7 @@
 #' Options must be one of: "left", "center", "right"
 #' @param col_widths Widths of columns. Must take the form of a list using list(). Uses expressions for the assignment of column widths for the table columns
 #' in data. Two-sided formulas (e.g, <LHS> ~ <RHS>) can be used, where the left-hand side corresponds to selections
-#' of columns and the right-hand side evaluates to single-length character values in the form {##}px (i.e., pixel dimensions);
+#' of columns and the right-hand side evaluates to single-length character values;
 #' the px() helper function is best used for this purpose. The pct() helper function is recommended for use in col_widths, which
 #' will allow you to set the percentage of the table width each column should make up. The column-based select helpers starts_with(), ends_with(), contains(),
 #' matches(), one_of(), and everything() can be used in the LHS. Subsequent expressions that operate on the columns assigned
@@ -48,11 +50,10 @@
 #' @param gotham Set to FALSE if you do not have the fonts Gotham Book and Gotham Bold installed and accessible to R. If FALSE, defaults to Helvetica.
 #' @param ... Other arguments
 #'
-#'
 #' @return An HTML table or raw HTML
-#' @export
 #' @import dplyr webshot stringr
 #' @importFrom gt tab_style tab_options cols_align cols_width tab_source_note fmt_markdown
+#' @export
 #' @examples table_format(head(mtcars))
 #' table_format(head(cars)) %>% return_html()
 #'
@@ -75,7 +76,7 @@ table_format <- function(data, header_fill = "darkblue", header_color = "white",
                          write = FALSE, path = "table.txt",
                          image_path = NULL,
                          header_colour = NULL, text_colour = NULL,
-                         border_colour = NULL, shade_colour = NULL,
+                         border_colour = NULL,
                          gotham = TRUE,
                          ...){
 

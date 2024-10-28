@@ -5,16 +5,6 @@
 \title{Apply Faunalytics theme}
 \usage{
 theme_faunalytics(
-  show_axis_title = TRUE,
-  show_x_axis_title = TRUE,
-  show_y_axis_title = TRUE,
-  show_axis_text = TRUE,
-  show_x_axis_text = TRUE,
-  show_y_axis_text = TRUE,
-  show_axis_ticks = TRUE,
-  show_x_axis_ticks = TRUE,
-  show_y_axis_ticks = TRUE,
-  legend_location = "bottom",
   font = "Gotham Book",
   font_bold = "Gotham Bold",
   gotham = TRUE
@@ -32,7 +22,4 @@ ggplot object
 }
 \description{
 Custom Faunalytics theme styling for ggplot objects.
-}
-\examples{
-ggplot(mtcars, aes(x = cyl, y = mpg)) + geom_col() + theme_faunalytics()
 }

@@ -17,15 +17,18 @@ Depends:
     R (>= 2.10)
 Imports:
     ggplot2,
-	tidyverse,
-	stringr,
-	tibble,
-	magrittr,
-	janitor,
-	gt,
-	zoo,
-	data.table,
-	usethis,
-	webshot,
-	viridis
+    tidyverse,
+    purrr,
+    stringr,
+    tibble,
+    magrittr,
+    janitor,
+    gt,
+    zoo,
+    data.table,
+    usethis,
+    webshot,
+    katex,
+    viridis,
+    extrafont
 URL: https://faunalytics.github.io/faunalytics/

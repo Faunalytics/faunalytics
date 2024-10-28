@@ -17,6 +17,8 @@
 #' of these is found and the correct `p_name` is not specified, an error will
 #' result.
 #' @return A tibble
+#' @importFrom janitor clean_names
+#' @import tidyverse purrr
 #' @export
 #'
 #' @examples m1 <- lm(mpg ~ cyl + hp + wt, data = mtcars)

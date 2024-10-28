@@ -23,6 +23,7 @@
 #' @param text_colour See text_color
 #' @param ... Other arguments
 #' @return An HTML table or raw HTML
+#' @import katex gt
 #' @export
 #' @importFrom zoo na.locf
 #' @examples temp_data <- data.frame(
