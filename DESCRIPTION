@@ -30,5 +30,6 @@ Imports:
     webshot,
     katex,
     viridis,
-    extrafont
+    extrafont,
+    sysfonts
 URL: https://faunalytics.github.io/faunalytics/

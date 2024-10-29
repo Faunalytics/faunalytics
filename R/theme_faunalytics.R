@@ -5,6 +5,7 @@
 #' @param gotham Set to FALSE if you do not have the fonts Gotham Book and Gotham Bold installed and accessible to R. If FALSE, defaults to Helvetica.
 #' @return ggplot object
 #' @import ggplot2
+#' @importFrom sysfonts font_files
 #' @export
 #' 
 theme_faunalytics <- function(font = "Gotham Book", font_bold = "Gotham Bold",
@@ -12,6 +13,25 @@ theme_faunalytics <- function(font = "Gotham Book", font_bold = "Gotham Bold",
   
   font <- "Gotham Book"   # font family (non-bold)
   font_bold <- "Gotham Bold" # font family (bold)
+  
+  if(gotham == TRUE | (font == "Gotham Book" & font_bold == "Gotham Bold")){
+    font_db <- font_files() |> as_tibble()
+    font_check <- font %in% font_db$family
+    font_bold_check <- font_bold %in% font_db$family
+    
+    if(font_check == FALSE | font_bold_check == FALSE){
+      warning(paste0("Warning: At least one of the following fonts is not loaded:\n",
+                     font, ", ", font_bold, ".\n
+                     Defaulting to Helvetica."))
+    }
+  }
+  
+  if(gotham == FALSE){
+    font <- "Helvetica"
+    font_bold <- "Helvetica-Bold"
+  }
+  
+
   
   if(gotham == FALSE){
     font <- "Helvetica"
