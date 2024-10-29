@@ -90,6 +90,21 @@ table_format <- function(data, header_fill = "darkblue", header_color = "white",
     border_color <- border_colour
   }
   
+  if(gotham == TRUE | (font_body == "Gotham Book" & font_bold == "Gotham Bold")){
+    font_db <- font_files() |> as_tibble()
+    font_body_check <- font_body %in% font_db$family
+    font_bold_check <- font_bold %in% font_db$family
+    
+    if(font_body_check == FALSE | font_bold_check == FALSE){
+      warning(paste0("Warning: At least one of the following fonts is not loaded:\n",
+                     font_body, ", ", font_bold, ".\n
+                     Defaulting to Helvetica."))
+      
+      font_body <- "Helvetica"
+      font_bold <- "Helvetica-Bold"
+    }
+  }
+  
   if(gotham == FALSE){
     font_body <- "Helvetica"
     font_bold <- "Helvetica-Bold"
