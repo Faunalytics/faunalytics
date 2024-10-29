@@ -11,9 +11,6 @@
 theme_faunalytics <- function(font = "Gotham Book", font_bold = "Gotham Bold",
                               gotham = TRUE){ 
   
-  font <- "Gotham Book"   # font family (non-bold)
-  font_bold <- "Gotham Bold" # font family (bold)
-  
   if(gotham == TRUE | (font == "Gotham Book" & font_bold == "Gotham Bold")){
     font_db <- font_files() |> as_tibble()
     font_check <- font %in% font_db$family
@@ -23,6 +20,9 @@ theme_faunalytics <- function(font = "Gotham Book", font_bold = "Gotham Bold",
       warning(paste0("Warning: At least one of the following fonts is not loaded:\n",
                      font, ", ", font_bold, ".\n
                      Defaulting to Helvetica."))
+      
+      font <- "Helvetica"
+      font_bold <- "Helvetica-Bold"
     }
   }
   
@@ -33,10 +33,7 @@ theme_faunalytics <- function(font = "Gotham Book", font_bold = "Gotham Bold",
   
 
   
-  if(gotham == FALSE){
-    font <- "Helvetica"
-    font_bold <- "Helvetica-Bold"
-  }
+
   
   theme_minimal() %+replace%    #replace elements we want to change
     
