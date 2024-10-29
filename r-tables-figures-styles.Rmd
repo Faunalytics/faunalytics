@@ -26,10 +26,12 @@ install.packages("devtools")
 ```
 
 ## Install the `faunalytics` package
-Install the most recent version of the `faunalytics` package:
+Always be sure to install the most recent version of the `faunalytics` package:
 ```{r install-fauna, eval = FALSE}
 devtools::install_github("faunalytics/faunalytics")
 ```
+Contact Zach if you run into any issues with installation or with the 
+`faunalytics` package.
 
 ## Install and load the Gotham font family
 If you have not already, make sure to download and install all of [the Gotham
@@ -43,14 +45,20 @@ extrafont::loadfonts(device = "win") # only needed if you're on a Windows comput
 ```
 
 If you run into issues getting the fonts to work, there are a lot of
-troubleshooting resources online. You can also contact Zach for support.
+troubleshooting resources online. You could try the `showtext` page as an 
+alternative to `extrafont.` You can also contact Zach for support.
 
-The only functions (as of October 28, 2024) that directly call on the Gotham
+The only functions (as of October 29, 2024) that directly call on the Gotham
 font family are `faunalytics::theme_faunalytics()` and 
 `faunalytics::table_format()`. Both of these also take an argument `gotham` that
 is `TRUE` by default, but can be set to `FALSE`, which will make it use
-Helvetica instead of Gotham. For example, `theme_faunalytics(gotham = FALSE)`
-or `table_format(gotham = FALSE)`.
+Helvetica (R's default sans serif) instead of Gotham. For example, 
+`theme_faunalytics(gotham = FALSE)` or `table_format(gotham = FALSE)`. 
+
+However, because we default to Gotham for our visualizations, please leave this
+set to `TRUE` if possible. If someone (e.g., a non-Faunalyst) tries to use those
+functions without having the Gotham fonts installed, the code will still run and
+will give a warning say that it is using Helvetica.
 
 ## Webshot
 We use the `gt` package for tables. In order to save `gt` objects to PNGs like
@@ -172,6 +180,17 @@ ggplot(mtcars2, aes(x = cyl, y = mpg)) +
 
 *Note:* In ggplot terms, `fill` is the term for bars and other things that are
 *filled in* with a color. `color` refers to lines, points, and borders. 
+
+You can use a function like `scale_fill_manual` or `scale_color_manual` to
+tell `ggplot` to use specific, discrete colors. If you need a gradient, you can
+use functions like `scale_fill_gradient` or `scale_color_gradient`. For example,
+you can have a gradient go from dark blue to light blue using:
+```{r scale_colors, eval = F}
+... +
+scale_fill_gradient(low = fauna_colors("darkblue"), 
+                    high = fauna_colors("lightblue")) +
+...
+```
 
 ## Maximizing the data-ink ratio
 
@@ -572,14 +591,12 @@ On a non-existent object called `gt_tbl`, we'd save that like this:
 gtsave(gt_tbl, "output/tables/table-1-results.png") # save table as png
 ```
 As noted above, this requires webshot2 to be installed. 
-
-# TO ADD:
-- Gotham installation
-- need to do something about reproducability without Gotham
-    - perhaps: build into the two Gotham-using pckgs a check. if no Gotham,
-      then WORK ANYWAY but throw a warning. also give option to avoid warning
-      by specifying gotham = FALSE
-- webshot installation
-- faunalytics package updates
-- why do i have to load gt?
-- continuous color ramp
+<br>
+<br>
+<br>
+*If you have any questions, please feel free to reach out to [Zach](mailto:zach@faunalytics.org).*
+<br>
+<br>
+```{r, out.width = "10%", fig.align="center", echo = FALSE}
+knitr::include_graphics("docs/fauna_bird_blue.png")
+```
